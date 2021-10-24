@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/26 20:57:12 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/07/26 21:25:31 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	char	aux;
 
-	if (argc > 1)
+	if (n >= 0 && n < 10)
 	{
-		if (ft_check_args(argc, argv))
-		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		aux = n % 10 + '0';
+		write(fd, &aux, 1);
+		return ;
 	}
-	return (0);
+	if (n < 0)
+	{
+		aux = -1 * (n % 10) + '0';
+		write(fd, "-", 1);
+		n /= -10;
+	}
+	else
+	{
+		aux = n % 10 + '0';
+		n /= 10;
+	}
+	if (n > 0)
+		ft_putnbr_fd(n, fd);
+	write(fd, &aux, 1);
 }

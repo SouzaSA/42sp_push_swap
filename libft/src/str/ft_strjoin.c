@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/24 15:58:32 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/08/04 09:20:42 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*dst;
 
-	if (argc > 1)
+	dst = NULL;
+	if (s1)
 	{
-		if (ft_check_args(argc, argv))
+		s1_len = ft_strlen(s1);
+		s2_len = ft_strlen(s2);
+		dst = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+		if (dst)
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
+			ft_memcpy(dst, s1, s1_len);
+			ft_memcpy(dst + s1_len, s2, s2_len);
+			dst[s1_len + s2_len] = '\0';
 		}
 	}
-	return (0);
+	return (dst);
 }

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/26 20:37:39 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/08/04 10:01:34 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t	i;
 
-	if (argc > 1)
+	if (s)
 	{
-		if (ft_check_args(argc, argv))
+		i = 0;
+		while (s[i] != '\0')
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
+			write(fd, s + i, 1);
+			i++;
 		}
 	}
-	return (0);
 }

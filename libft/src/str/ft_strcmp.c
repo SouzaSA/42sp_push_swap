@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/09/05 19:03:02 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/09/07 17:24:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t	i;
+	int		diff;
 
-	if (argc > 1)
+	i = 0;
+	diff = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 	{
-		if (ft_check_args(argc, argv))
-		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		i++;
 	}
-	return (0);
+	diff = (int)(unsigned char) s1[i] - (int)(unsigned char) s2[i];
+	return (diff);
 }

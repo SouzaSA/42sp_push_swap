@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/28 18:34:18 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/07/31 10:04:18 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	if (argc > 1)
-	{
-		if (ft_check_args(argc, argv))
-		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
-	}
-	return (0);
+	del(lst->content);
+	free(lst);
 }

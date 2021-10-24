@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/26 12:32:04 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/08/04 09:55:20 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	unsigned int	i;
+	char			*dst;
 
-	if (argc > 1)
+	if (!s)
+		return (NULL);
+	i = 0;
+	dst = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (dst)
 	{
-		if (ft_check_args(argc, argv))
+		while (s[i] != '\0')
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
+			dst[i] = f(i, (char)s[i]);
+			i++;
 		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		dst[i] = '\0';
 	}
-	return (0);
+	return (dst);
 }

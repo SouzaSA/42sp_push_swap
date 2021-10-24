@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/23 16:58:52 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/08/09 19:16:51 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t	i;
 
-	if (argc > 1)
+	if (!src || !dst)
+		return (0);
+	i = 0;
+	if (size > 0)
 	{
-		if (ft_check_args(argc, argv))
+		while (i < size - 1 && src[i] != '\0')
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
+			dst[i] = src[i];
+			i++;
 		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		dst[i] = '\0';
 	}
-	return (0);
+	return (ft_strlen(src));
 }

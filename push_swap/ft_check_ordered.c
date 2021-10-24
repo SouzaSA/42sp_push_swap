@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_check_ordered.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/10/24 15:37:32 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/10/24 15:40:48 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_is_ordered(int *values, int size)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	int	i;
+	int	is_ordered;
 
-	if (argc > 1)
+	is_ordered = 1;
+	while (i < size - 1)
 	{
-		if (ft_check_args(argc, argv))
-		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		if (values[i] > values[i + 1])
+			is_ordered = 0;
+		i++;
 	}
-	return (0);
+	return (is_ordered);
 }

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/23 14:48:00 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/07/30 00:02:54 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t		i;
 
-	if (argc > 1)
+	i = 0;
+	if (dest || src)
 	{
-		if (ft_check_args(argc, argv))
+		if (dest < src)
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
+			ft_memcpy(dest, src, n);
 		}
 		else
 		{
-			write(2, "Error\n", 6);
-			return (1);
+			while (i < n)
+			{
+				((char *)dest)[n - i - 1] = ((char *)src)[n - i - 1];
+				i++;
+			}
 		}
 	}
-	return (0);
+	return (dest);
 }

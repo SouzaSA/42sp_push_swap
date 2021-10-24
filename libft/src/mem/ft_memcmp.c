@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/07/23 19:46:36 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/07/31 14:00:42 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	unsigned char	*v1;
+	unsigned char	*v2;
+	size_t			i;
+	int				diff;
 
-	if (argc > 1)
+	v1 = (unsigned char *)s1;
+	v2 = (unsigned char *)s2;
+	i = 0;
+	diff = 0;
+	if (n > 0)
 	{
-		if (ft_check_args(argc, argv))
-		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+		while (i < n && v1[i] == v2[i])
+			i++;
+		if (i < n)
+			diff = (int)(v1[i] - v2[i]);
 	}
-	return (0);
+	return (diff);
 }
