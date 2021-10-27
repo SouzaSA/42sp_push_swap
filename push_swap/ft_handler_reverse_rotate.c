@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:09:39 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/20 18:18:01 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:40:44 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_reverse_rotate_worker(t_stack *stack)
 /* reverse rotate - shift down all elements of a stack by 1. The last element */
 /* becomes the first one. Print "rra" or "rrb" message.                       */
 /* ************************************************************************** */
-void	ft_rotate(t_stack *stack, char name)
+void	ft_reverse_rotate(t_stack *stack, char name)
 {
 	char	print_val[4];
 
@@ -51,7 +51,7 @@ void	ft_rotate(t_stack *stack, char name)
 /* rotate both - shift down all elements of both stacks by 1. The last        */
 /* element becomes the first one, in both stacks. Print "rrr".                */
 /* ************************************************************************** */
-void	ft_rotate_both(t_stack *stack_a, t_stack *stack_b)
+void	ft_reverse_rotate_both(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_reverse_rotate_worker(stack_a);
 	ft_reverse_rotate_worker(stack_b);

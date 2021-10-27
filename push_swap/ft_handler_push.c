@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:07:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/20 18:20:29 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:14:50 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_push_worker(t_stack *stack_x, t_stack *stack_y, char *print_val)
 	if (stack_y->top > 0)
 	{
 		stack_x->top++;
-		stack_x->values[stack_x->top] = stack_y[stack_y->top];
+		stack_x->values[stack_x->top] = stack_y->values[stack_y->top];
 		stack_y->top--;
 		write(1, print_val, 3);
 	}

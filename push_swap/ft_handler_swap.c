@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:05:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/20 18:20:49 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:10:01 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_swap_one(t_stack *stack, char name)
 /* swap both - swap the first 2 elements at the top of both stacks at same    */
 /* time.                                                                      */
 /* ************************************************************************** */
-void	ft_swap_both(t_stack *stack_a, t_stack *stack_a)
+void	ft_swap_both(t_stack *stack_a, t_stack *stack_b)
 {
 	int	tmp;
 
