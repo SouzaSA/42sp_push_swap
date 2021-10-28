@@ -8,6 +8,7 @@ INC_DIR			=	inc
 SRC_DIR			=	src
 IS_DIR			=	is
 LST_DIR			=	lst
+MATH_DIR		=	math
 MEM_DIR			=	mem
 PUT_DIR			=	put
 STR_DIR			=	str
@@ -30,6 +31,10 @@ LST				=	ft_lstadd_back.c	\
 					ft_lstmap.c	\
 					ft_lstnew.c	\
 					ft_lstsize.c
+
+MATH			=	ft_abs.c	\
+					ft_max.c	\
+					ft_min.c
 
 MEM				=	ft_bzero.c	\
 					ft_calloc.c	\

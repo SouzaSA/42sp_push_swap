@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_ordered.c                                 :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 15:37:32 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/28 14:16:40 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/10/28 13:36:49 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/10/28 13:45:54 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	ft_is_ordered(int *values, int size)
+int	ft_min(int nb_a, int nb_b)
 {
-	int	i;
-	int	is_ordered;
+	int	rtn;
 
-	is_ordered = 1;
-	while (i < size - 1)
-	{
-		if (values[i] > values[i + 1])
-			is_ordered = 0;
-		i++;
-	}
-	return (is_ordered);
+	rtn = nb_a;
+	if (rtn > nb_b)
+		rtn = nb_b;
+	return (rtn);
 }
