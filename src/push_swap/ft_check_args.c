@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 11:59:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/02 20:23:47 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	*ft_get_int_array(int argc, char **argv)
 		while (i < argc - 1)
 		{
 			values[i] = ft_atoi(argv[i + 1]);
-			if ((values[i] == 0 || values[i] == -1) && ft_strlen(values[i] > 2))
+			if ((values[i] == 0 || values[i] == -1) && ft_strlen(argv[i + 1]) > 2)
 			{
 				free(values);
 				values = NULL;

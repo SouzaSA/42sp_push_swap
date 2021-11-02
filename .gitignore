@@ -1,0 +1,9 @@
+obj
+*.out
+*.a
+libft/obj
+libft/a
+libft/lib
+teste
+/push_swap
+/checker

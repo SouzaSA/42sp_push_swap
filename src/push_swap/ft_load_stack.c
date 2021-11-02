@@ -6,14 +6,14 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/28 14:14:49 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:45:33 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
 static void	ft_load_stack_a(int argc, char **argv, t_stack *stack_a);
-static void	ft_load_values(int *values, int argc, int **argv);
+static void	ft_load_values(int *values, int argc, char **argv);
 static void	ft_change_values(int *values, int *aux_vector, int size);
 
 /* ************************************************************************** */
@@ -33,20 +33,17 @@ void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 
 static void	ft_load_stack_a(int argc, char **argv, t_stack *stack_a)
 {
-	int	i;
-	int	j;
 	int	*aux_vector;
 
-	i = 0;
 	aux_vector = (int *)malloc((argc - 1) * sizeof(int));
-	ft_load_values(stack_a, argc, argv);
+	ft_load_values(stack_a->values, argc, argv);
 	ft_load_values(aux_vector, argc, argv);
 	ft_merge_sort(aux_vector, 0, argc - 2);
 	ft_change_values(stack_a->values, aux_vector, argc - 1);
 	free(aux_vector);
 }
 
-static void	ft_load_values(int *values, int argc, int **argv)
+static void	ft_load_values(int *values, int argc, char **argv)
 {
 	int	i;
 

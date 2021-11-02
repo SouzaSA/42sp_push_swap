@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:37:32 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/28 14:16:40 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:40:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_is_ordered(int *values, int size)
 	int	is_ordered;
 
 	is_ordered = 1;
+	i = 0;
 	while (i < size - 1)
 	{
 		if (values[i] > values[i + 1])

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 12:00:05 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/02 20:24:04 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (ft_check_args(argc, argv))
+		if (!ft_check_args(argc, argv))
 		{
-			ft_load_stacks(argc, argv, &stack_a, &stack_b);
+			ft_load(argc, argv, &stack_a, &stack_b);
 			ft_push_swap(&stack_a, &stack_b);
 			ft_destroy_stacks(&stack_a, &stack_b);
 		}

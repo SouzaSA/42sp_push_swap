@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:05:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/27 16:10:01 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:43:01 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	ft_swap_one(t_stack *stack, char name)
 /* ************************************************************************** */
 void	ft_swap_both(t_stack *stack_a, t_stack *stack_b)
 {
-	int	tmp;
-
 	if (stack_a->top > 0 && stack_b->top > 0)
 	{
 		ft_swap(stack_a);
