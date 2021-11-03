@@ -11,6 +11,7 @@ LST_DIR			=	lst
 MATH_DIR		=	math
 MEM_DIR			=	mem
 PUT_DIR			=	put
+SORT_DIR		=	sorting
 STR_DIR			=	str
 
 INCS			=	-I ./${INC_DIR}
@@ -49,6 +50,8 @@ PUT				=	ft_putchar_fd.c	\
 					ft_putnbr_fd.c	\
 					ft_putstr_fd.c
 
+SORT			=	ft_merge_sort.c
+
 STR				=	ft_atoi.c	\
 					ft_itoa.c	\
 					ft_split.c	\
@@ -74,6 +77,7 @@ SRCS			=	${ADD_DIR_IS}	\
 					${ADD_DIR_LST}	\
 					${ADD_DIR_MEM}	\
 					${ADD_DIR_PUT}	\
+					${ADD_DIR_SORT}	\
 					${ADD_DIR_STR}
 
 ADD_DIR_IS		=	${addprefix ${IS_DIR}/,${IS}}
@@ -81,6 +85,7 @@ ADD_DIR_LST		=	${addprefix ${LST_DIR}/,${LST}}
 ADD_DIR_MEM		=	${addprefix ${MEM_DIR}/,${MEM}}
 ADD_DIR_PUT		=	${addprefix ${PUT_DIR}/,${PUT}}
 ADD_DIR_STR		=	${addprefix ${STR_DIR}/,${STR}}
+ADD_DIR_SORT	=	${addprefix ${SORT_DIR}/,${SORT}}
 LIB_FILE		=	${addprefix ${LIB_DIR}/,${NAME}}
 SRCS_DIR		=	${addprefix ${SRC_DIR}/,${SRCS}}
 

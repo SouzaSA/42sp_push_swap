@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:47:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/28 13:44:06 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:04:26 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
+
+void	ft_merge_sort(int *values, int start, int end);
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);

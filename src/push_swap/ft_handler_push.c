@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:07:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/27 16:14:50 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/03 20:14:30 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 /* push worker- take the first element at the top of stack_y and put it at    */
 /* the top of stack_x. Do nothing if the stack_y is empty.                    */
 /* ************************************************************************** */
-void	ft_push_worker(t_stack *stack_x, t_stack *stack_y, char *print_val)
+void	ft_push_worker(t_stack *stack_x, t_stack *stack_y)
 {
-	if (stack_y->top > 0)
+	if (stack_y->top >= 0)
 	{
 		stack_x->top++;
 		stack_x->values[stack_x->top] = stack_y->values[stack_y->top];
 		stack_y->top--;
-		write(1, print_val, 3);
 	}
 }
 
@@ -39,8 +38,8 @@ void	ft_push(t_stack *stack_a, t_stack *stack_b, char name)
 	print_val[1] = name;
 	print_val[2] = '\n';
 	if (name == 'a')
-		ft_push_worker(stack_a, stack_b, print_val);
+		ft_push_worker(stack_a, stack_b);
 	if (name == 'b')
-		ft_push_worker(stack_b, stack_a, print_val);
+		ft_push_worker(stack_b, stack_a);
 	write(1, print_val, 3);
 }

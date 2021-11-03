@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/02 19:45:33 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:48:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 	stack_b->size = argc - 1;
 	stack_b->top = -1;
 	stack_b->values = malloc(stack_b->size * sizeof(t_stack));
-	stack_a->values = malloc(stack_a->size * sizeof(t_stack));
 	stack_a->size = argc - 1;
+	stack_a->top = argc - 2;
+	stack_a->values = malloc(stack_a->size * sizeof(t_stack));
 	ft_load_stack_a(argc, argv, stack_a);
 }
 
@@ -66,8 +67,8 @@ static void	ft_change_values(int *values, int *aux_vector, int size)
 		j = 0;
 		while (j < size)
 		{
-			if (aux_vector[i] == values[j])
-				values[j] = i;
+			if (aux_vector[j] == values[i])
+				values[i] = j;
 			j++;
 		}
 		i++;

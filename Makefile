@@ -61,10 +61,10 @@ bonus:			${BONUS_OBJS}
 				${CC} ${CFLAGS} ${BONUS_OBJS} -o ${NAME} ${INCS}
 
 san:			${OBJS}
-				${CC} ${SAN} ${CFLAGS} ${OBJS} -o ${NAME} ${INCS}
+				${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 bonus_san:		${BONUS_OBJS}
-				${CC} ${SAN} ${CFLAGS} ${BONUS_OBJS} -o ${NAME} ${INCS}
+				${CC} ${SAN} ${CFLAGS} ${BONUS_OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 clean:
 				${RM} ${OBJ_DIR}

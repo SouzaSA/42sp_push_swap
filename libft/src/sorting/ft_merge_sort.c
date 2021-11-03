@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ordering_merge_sort.c                           :+:      :+:    :+:   */
+/*   ft_merge_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:07:09 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 15:23:18 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:06:57 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
 static void	ft_transfer_values(int *values, int *aux_array, int start, int end);
 static void	ft_merge(int *values, int start, int mid, int end);
