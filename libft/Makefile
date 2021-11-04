@@ -54,6 +54,8 @@ SORT			=	ft_merge_sort.c
 
 STR				=	ft_atoi.c	\
 					ft_itoa.c	\
+					ft_split_destroy.c	\
+					ft_split_len.c	\
 					ft_split.c	\
 					ft_strchr.c	\
 					ft_strcmp.c	\

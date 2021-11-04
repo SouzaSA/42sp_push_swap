@@ -6,15 +6,15 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/02 20:23:47 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/04 10:21:05 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int	ft_has_invalid(int argc, char **argv);
+static int	ft_has_invalid(char **argv);
 static int	ft_has_duplicates(int *values, int size);
-static int	*ft_get_int_array(int argc, char **argv);
+static int	*ft_get_int_array(int size, char **argv);
 
 /* ************************************************************************** */
 /* check args - that all entries are integers and that there are no duplicate */
@@ -22,22 +22,32 @@ static int	*ft_get_int_array(int argc, char **argv);
 /* ************************************************************************** */
 int	ft_check_args(int argc, char **argv)
 {
-	int	error;
-	int	*values;
+	int		i;
+	int		error;
+	int		*values;
+	char	**argv_split;
 
+	i = 0;
 	values = NULL;
-	error = ft_has_invalid(argc, argv);
-	if (!error)
-		values = ft_get_int_array(argc, argv);
-	if (values)
-		error = ft_has_duplicates(values, argc - 1);
-	else
-		error = 1;
-	free(values);
+	error = 0;
+	while (i < argc)
+	{
+		argv_split = ft_split(argv[i], ' ');
+		error = ft_has_invalid(argv_split);
+		if (!error)
+			values = ft_get_int_array(ft_split_len(argv_split), argv_split);
+		if (values)
+			error = ft_has_duplicates(values, ft_split_len(argv_split));
+		else
+			error = 1;
+		free(values);
+		ft_split_destroy(argv_split);
+		i++;
+	}
 	return (error);
 }
 
-static int	ft_has_invalid(int argc, char **argv)
+static int	ft_has_invalid(char **vals)
 {
 	int	i;
 	int	j;
@@ -46,13 +56,13 @@ static int	ft_has_invalid(int argc, char **argv)
 
 	i = 1;
 	error = 0;
-	while (i < argc)
+	while (vals[i])
 	{
 		j = 0;
-		arg_len = ft_strlen(argv[i]);
+		arg_len = ft_strlen(vals[i]);
 		while (j < arg_len)
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(vals[i][j]))
 			{
 				error = 1;
 			}
@@ -85,19 +95,19 @@ static int	ft_has_duplicates(int *values, int size)
 	return (error);
 }
 
-static int	*ft_get_int_array(int argc, char **argv)
+static int	*ft_get_int_array(int size, char **vals)
 {
 	int	i;
 	int	*values;
 
 	i = 0;
-	values = malloc((argc - 1) * sizeof(int));
+	values = malloc(size * sizeof(int));
 	if (values)
 	{
-		while (i < argc - 1)
+		while (i < size)
 		{
-			values[i] = ft_atoi(argv[i + 1]);
-			if ((values[i] == 0 || values[i] == -1) && ft_strlen(argv[i + 1]) > 2)
+			values[i] = ft_atoi(vals[i]);
+			if ((values[i] == 0 || values[i] == -1) && ft_strlen(vals[i]) > 2)
 			{
 				free(values);
 				values = NULL;

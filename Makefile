@@ -30,7 +30,6 @@ SRCS			=	ft_check_args.c	\
 					ft_handler_swap.c	\
 					ft_load_stack.c	\
 					ft_main.c	\
-					ft_ordering_merge_sort.c	\
 					ft_push_swap.c
 
 BONUS			=
