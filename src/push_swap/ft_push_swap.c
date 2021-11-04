@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:32:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/03 20:21:58 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/04 12:42:14 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,33 @@ int	ft_push_swap(t_stack *stk_a, t_stack *stk_b)
 
 	distances_a = ft_get_distances(stk_a, 'a');
 	distances_b = ft_get_distances(stk_b, 'a');
+	int i;
+
+	i = 0;
+	while (i < stk_a->top + 1)
+	{
+		printf("%d ", stk_a->values[i]);
+		i++;
+	}
 	while (!ft_check_sort_stack_a(stk_a))
 	{
-		if (stk_a->values[stk_a->top] == stk_a->values[stk_a->top - 1] + 1)
+	getchar();
+	i = 0;
+	while (i < stk_a->top + 1)
+	{
+		printf("%d ", distances_a[i]);
+		i++;
+	}
+	printf("\n");
+		printf("%d, %d\n ", stk_a->top, ft_get_first_non_zero_idx(distances_a, stk_a->top + 1));
+
+		if (stk_a->values[stk_a->top] == stk_a->values[stk_a->top - 1] - 1)
 			ft_swap_one(stk_a, 'a');
 		else if (distances_a[stk_a->top] == 0 && stk_a->values[stk_a->top] < stk_a->size / 2 && ft_get_first_non_zero_idx(distances_a, stk_a->top + 1) < stk_a->top + 1)
 			ft_push(stk_a, stk_b, 'b');
 		else if (stk_a->values[stk_a->top] < stk_a->size / 2 && ft_get_first_non_zero_idx(distances_a, stk_a->top + 1) < stk_a->top + 1)
 			ft_push(stk_a, stk_b, 'b');
-		else if (stk_b->top > 0 && stk_b->values[stk_b->top] == stk_b->values[stk_b->top - 1] - 1)
+		else if (stk_b->top > 0 && stk_b->values[stk_b->top] == stk_b->values[stk_b->top - 1] + 1)
 			ft_swap_one(stk_b, 'b');
 		else if (distances_a[stk_a->top] > 0 && ft_get_first_non_zero_idx(distances_a, stk_a->top + 1) < stk_a->top + 1)
 			ft_rotate(stk_a, 'a');
@@ -53,6 +71,20 @@ int	ft_push_swap(t_stack *stk_a, t_stack *stk_b)
 			ft_rotate(stk_b, 'b');
 		else if (ft_get_first_non_zero_idx(distances_b, stk_b->top + 1) == stk_b->top + 1)
 			ft_push(stk_a, stk_b, 'a');
+	i = 0;
+	while (i < stk_a->top + 1)
+	{
+		printf("%d ", stk_a->values[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while (i < stk_b->top + 1)
+	{
+		printf("%d ", stk_b->values[i]);
+		i++;
+	}
+	printf("\n");
 		ft_update_distances(stk_a, distances_a, 'a');
 		ft_update_distances(stk_b, distances_b, 'b');
 	}
