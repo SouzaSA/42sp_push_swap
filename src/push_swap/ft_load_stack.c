@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/04 11:39:02 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/04 11:43:42 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 	i = 0;
 	while (vals[i])
 	{
-		free(vals[i]);
+		ft_split_destroy(vals[i]);
 		i++;
 	}
 	free(vals);
