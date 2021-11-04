@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/04 11:05:02 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/04 11:39:02 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	ft_load_values(int *values, char ***vals)
 	while (vals[i])
 	{
 		j = 0;
-		while (vals[j])
+		while (vals[i][j])
 		{
 			values[k] = ft_atoi(vals[i][j]);
 			j++;
