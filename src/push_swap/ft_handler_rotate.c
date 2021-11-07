@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:08:02 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/20 18:20:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/06 09:41:28 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	ft_rotate_worker(t_stack *stack)
 	int	i;
 	int	tmp;
 
-	i = 0;
-	while (i < stack->top)
+	i = stack->top;
+	while (i > 0)
 	{
-		tmp = stack->values[i + 1];
-		stack->values[i + 1] = stack->values[i];
-		stack->values[i] = tmp;
-		i++;
+		tmp = stack->values[i];
+		stack->values[i] = stack->values[i - 1];
+		stack->values[i - 1] = tmp;
+		i--;
 	}
 }
 

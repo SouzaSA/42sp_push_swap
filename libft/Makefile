@@ -6,6 +6,7 @@ LIB_DIR			=	lib
 OBJ_DIR			=	obj
 INC_DIR			=	inc
 SRC_DIR			=	src
+ARRAY_DIR		=	array
 IS_DIR			=	is
 LST_DIR			=	lst
 MATH_DIR		=	math
@@ -15,6 +16,9 @@ SORT_DIR		=	sorting
 STR_DIR			=	str
 
 INCS			=	-I ./${INC_DIR}
+
+ARRAY			=	ft_largest_int.c	\
+					ft_smallest_int.c
 
 IS				=	ft_isalnum.c	\
 					ft_isalpha.c	\
@@ -34,6 +38,7 @@ LST				=	ft_lstadd_back.c	\
 					ft_lstsize.c
 
 MATH			=	ft_abs.c	\
+					ft_average.c	\
 					ft_max.c	\
 					ft_min.c
 
@@ -75,15 +80,19 @@ STR				=	ft_atoi.c	\
 					ft_tolower.c	\
 					ft_toupper.c
 
-SRCS			=	${ADD_DIR_IS}	\
+SRCS			=	${ADD_DIR_ARRAY}	\
+					${ADD_DIR_IS}	\
 					${ADD_DIR_LST}	\
+					${ADD_DIR_MATH}	\
 					${ADD_DIR_MEM}	\
 					${ADD_DIR_PUT}	\
 					${ADD_DIR_SORT}	\
 					${ADD_DIR_STR}
 
+ADD_DIR_ARRAY	=	${addprefix ${ARRAY_DIR}/,${ARRAY}}
 ADD_DIR_IS		=	${addprefix ${IS_DIR}/,${IS}}
 ADD_DIR_LST		=	${addprefix ${LST_DIR}/,${LST}}
+ADD_DIR_MATH	=	${addprefix ${MATH_DIR}/,${MATH}}
 ADD_DIR_MEM		=	${addprefix ${MEM_DIR}/,${MEM}}
 ADD_DIR_PUT		=	${addprefix ${PUT_DIR}/,${PUT}}
 ADD_DIR_STR		=	${addprefix ${STR_DIR}/,${STR}}

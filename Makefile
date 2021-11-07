@@ -30,6 +30,8 @@ SRCS			=	ft_check_args.c	\
 					ft_handler_swap.c	\
 					ft_load_stack.c	\
 					ft_main.c	\
+					ft_order_big_mess.c	\
+					ft_order_small_mess.c	\
 					ft_push_swap.c
 
 BONUS			=
@@ -67,9 +69,11 @@ bonus_san:		${BONUS_OBJS}
 
 clean:
 				${RM} ${OBJ_DIR}
+				make -C ${LIBFT_DIR} clean
 
 fclean: 		clean
 				${RM} ${NAME}
+				make -C ${LIBFT_DIR} fclean
 
 re:				fclean all
 

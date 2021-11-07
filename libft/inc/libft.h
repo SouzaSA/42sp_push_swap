@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:47:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/04 10:18:41 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/07 18:44:43 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }		t_list;
+
+size_t	ft_largest_int_idx(int *array, size_t size);
+size_t	ft_smallest_int_idx(int *array, size_t size);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -39,6 +42,7 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
 int		ft_abs(int value);
+int		ft_average(int nb_a, int nb_b);
 int		ft_max(int nb_a, int nb_b);
 int		ft_min(int nb_a, int nb_b);
 
