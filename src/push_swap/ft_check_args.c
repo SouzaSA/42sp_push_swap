@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/04 10:21:05 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:30:50 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_has_invalid(char **argv);
 static int	ft_has_duplicates(int *values, int size);
-static int	*ft_get_int_array(int size, char **argv);
 
 /* ************************************************************************** */
 /* check args - that all entries are integers and that there are no duplicate */
@@ -25,25 +24,28 @@ int	ft_check_args(int argc, char **argv)
 	int		i;
 	int		error;
 	int		*values;
-	char	**argv_split;
+	int		num_vals;
+	char	***vals;
+
 
 	i = 0;
 	values = NULL;
 	error = 0;
-	while (i < argc)
+	vals = ft_get_splited_vals(argc, argv);
+	num_vals = ft_get_num_vals(vals);
+	while (vals[i] && !error)
 	{
-		argv_split = ft_split(argv[i], ' ');
-		error = ft_has_invalid(argv_split);
-		if (!error)
-			values = ft_get_int_array(ft_split_len(argv_split), argv_split);
-		if (values)
-			error = ft_has_duplicates(values, ft_split_len(argv_split));
-		else
-			error = 1;
-		free(values);
-		ft_split_destroy(argv_split);
+		error = ft_has_invalid(vals[i]);
 		i++;
 	}
+	if (!error)
+		values	= ft_load_values(vals, num_vals);
+	if (values)
+		error = ft_has_duplicates(values, num_vals);
+	else
+		error = 1;
+	free(values);
+	ft_destroy_splited_vals(vals);
 	return (error);
 }
 
@@ -93,28 +95,4 @@ static int	ft_has_duplicates(int *values, int size)
 		i++;
 	}
 	return (error);
-}
-
-static int	*ft_get_int_array(int size, char **vals)
-{
-	int	i;
-	int	*values;
-
-	i = 0;
-	values = malloc(size * sizeof(int));
-	if (values)
-	{
-		while (i < size)
-		{
-			values[i] = ft_atoi(vals[i]);
-			if ((values[i] == 0 || values[i] == -1) && ft_strlen(vals[i]) > 2)
-			{
-				free(values);
-				values = NULL;
-				break ;
-			}
-			i++;
-		}
-	}
-	return (values);
 }

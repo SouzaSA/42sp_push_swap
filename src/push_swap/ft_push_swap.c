@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:32:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/09 16:37:59 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/10 09:47:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_push_swap(t_stack *stk_a, t_stack *stk_b)
 			num_wrong_pos++;
 		i--;
 	}
-	if (num_wrong_pos < stk_a->size / 10 || stk_a->top < 6)
+	if (num_wrong_pos < stk_a->size / 10 || stk_a->top < 0)
 		ft_order_small_mess(stk_a, stk_b);
 	else
 		ft_order_big_mess(stk_a, stk_b);

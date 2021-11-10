@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:25:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/09 16:15:12 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:23:46 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_order_big_mess(t_stack *stk_a, t_stack *stk_b)
 	t_idxs	idxs_a;
 	t_idxs	idxs_b;
 
-	ft_get_idxs(stk_a, &idxs_a, 'a', 0);
-	ft_get_idxs(stk_b, &idxs_b, 'b', 0);
+	ft_get_idxs(stk_a, &idxs_a, 'a', stk_a->top);
+	ft_get_idxs(stk_b, &idxs_b, 'b', stk_a->top);
 	mean_a = ft_average(stk_a->values[idxs_a.max], stk_a->values[idxs_a.min]);
 	while (!ft_check_sort_stack_a(stk_a))
 	{
@@ -37,48 +37,71 @@ void	ft_order_big_mess(t_stack *stk_a, t_stack *stk_b)
 		}
 		else if (idxs_a.max != stk_a->top && idxs_b.min != stk_b->top \
 			&& stk_a->values[stk_a->top] > stk_a->values[stk_a->top - 1] \
-			&& stk_b->top > 0 && stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1])
+			&& stk_b->top > 0 \
+			&& stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1])
 			ft_swap_both(stk_a, stk_b);
-		else if (idxs_a.max != stk_a->top && stk_a->values[stk_a->top] > stk_a->values[stk_a->top - 1])
+		else if (idxs_a.max != stk_a->top \
+			&& stk_a->values[stk_a->top] > stk_a->values[stk_a->top - 1])
 			ft_swap_one(stk_a, 'a');
-		else if (idxs_b.min != stk_b->top && stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1] && stk_b->top > 0)
+		else if (idxs_b.min != stk_b->top && stk_b->top > 0\
+			&& stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1])
 			ft_swap_one(stk_b, 'b');
-		else if (!ft_check_partial_sort(stk_a, 'a') && !ft_check_partial_sort(stk_b, 'b') && idxs_a.first_wrong > 0 && idxs_a.first_wrong >= stk_a->top / 2 && stk_b->top > 1 \
-			&& idxs_b.first_wrong >= stk_b->top / 2 && idxs_a.first_wrong > 0)
+		else if (!ft_check_partial_sort(stk_a, 'a') \
+			&& !ft_check_partial_sort(stk_b, 'b') \
+			&& idxs_a.first_wrong != stk_a->top \
+			&& idxs_a.first_wrong >= stk_a->top / 2 && stk_b->top > 1 \
+			&& idxs_b.first_wrong >= stk_b->top / 2 \
+			&& idxs_b.first_wrong != stk_b->top)
 		{
 			ft_rotate_both(stk_a, stk_b);
-			idxs_a.first_wrong = (idxs_a.first_wrong - 1 + stk_a->top + 1) % (stk_a->top + 1);
-			idxs_b.first_wrong = (idxs_b.first_wrong - 1 + stk_b->top + 1) % (stk_b->top + 1);
-		}
-		else if (!ft_check_partial_sort(stk_a, 'a') && !ft_check_partial_sort(stk_b, 'b') && idxs_a.first_wrong < stk_a->top / 2 && idxs_a.first_wrong > 0 && stk_b->top > 1 \
-			&& idxs_b.first_wrong < stk_b->top / 2 && idxs_a.first_wrong > 0)
-		{
-			ft_reverse_rotate_both(stk_a, stk_b);
 			idxs_a.first_wrong = (idxs_a.first_wrong + 1) % (stk_a->top + 1);
 			idxs_b.first_wrong = (idxs_b.first_wrong + 1) % (stk_b->top + 1);
 		}
-		else if (!ft_check_partial_sort(stk_a, 'a') && idxs_a.first_wrong >= stk_a->top / 2 && idxs_a.first_wrong > 0)
+		else if (!ft_check_partial_sort(stk_a, 'a') \
+			&& !ft_check_partial_sort(stk_b, 'b') \
+			&& idxs_a.first_wrong < stk_a->top / 2 \
+			&& idxs_a.first_wrong != stk_a->top && stk_b->top > 1 \
+			&& idxs_b.first_wrong < stk_b->top / 2 \
+			&& idxs_b.first_wrong != stk_b->top)
+		{
+			ft_reverse_rotate_both(stk_a, stk_b);
+			idxs_a.first_wrong = (idxs_a.first_wrong - 1 + stk_a->top + 1) \
+			% (stk_a->top + 1);
+			idxs_b.first_wrong = (idxs_b.first_wrong - 1 + stk_b->top + 1) \
+			% (stk_b->top + 1);
+		}
+		else if (!ft_check_partial_sort(stk_a, 'a') \
+			&& idxs_a.first_wrong >= stk_a->top / 2 \
+			&& idxs_a.first_wrong != stk_a->top)
 		{
 			ft_rotate(stk_a, 'a');
-			idxs_a.first_wrong = (idxs_a.first_wrong - 1 + stk_a->top + 1) % (stk_a->top + 1);
-		}
-		else if (!ft_check_partial_sort(stk_b, 'b') && idxs_b.first_wrong >= stk_b->top / 2 && idxs_a.first_wrong > 0)
-		{
-			ft_rotate(stk_b, 'b');
-			idxs_b.first_wrong = (idxs_b.first_wrong - 1 + stk_b->top + 1) % (stk_b->top + 1);
-		}
-		else if (!ft_check_partial_sort(stk_a, 'a') && idxs_a.first_wrong < stk_a->top / 2 && idxs_a.first_wrong > 0)
-		{
-			ft_reverse_rotate(stk_a, 'a');
 			idxs_a.first_wrong = (idxs_a.first_wrong + 1) % (stk_a->top + 1);
 		}
-		else if (!ft_check_partial_sort(stk_b, 'b') && idxs_a.first_wrong > 0 \
+		else if (!ft_check_partial_sort(stk_b, 'b') \
+			&& idxs_b.first_wrong >= stk_b->top / 2 \
+			&& idxs_b.first_wrong != stk_b->top)
+		{
+			ft_rotate(stk_b, 'b');
+			idxs_b.first_wrong = (idxs_b.first_wrong + 1) % (stk_b->top + 1);
+		}
+		else if (!ft_check_partial_sort(stk_a, 'a') \
+			&& idxs_a.first_wrong < stk_a->top / 2 \
+			&& idxs_a.first_wrong != stk_a->top)
+		{
+			ft_reverse_rotate(stk_a, 'a');
+			idxs_a.first_wrong = (idxs_a.first_wrong - 1 + stk_a->top + 1) \
+				% (stk_a->top + 1);
+		}
+		else if (!ft_check_partial_sort(stk_b, 'b') \
+			&& idxs_b.first_wrong != stk_b->top \
 			&& idxs_b.first_wrong < stk_b->top / 2)
 		{
 			ft_reverse_rotate(stk_b, 'b');
-			idxs_b.first_wrong = (idxs_b.first_wrong + 1) % (stk_b->top + 1);
+			idxs_b.first_wrong = (idxs_b.first_wrong - 1 + stk_b->top + 1) \
+				% (stk_b->top + 1);
 		}
-		else if (idxs_a.max == stk_a->top && idxs_b.min == stk_b->top && stk_a->top > 0 && stk_b->top > 0)
+		else if (idxs_a.max == stk_a->top && idxs_b.min == stk_b->top \
+			&& stk_a->top > 0 && stk_b->top > 0)
 			ft_rotate_both(stk_a, stk_b);
 		else if (idxs_a.max == stk_a->top && stk_a->top > 0)
 			ft_rotate(stk_a, 'a');
@@ -117,23 +140,23 @@ static void	ft_get_idxs(t_stack *stk, t_idxs *idx_stk, char stk_name, int fwp)
 	idx_stk->min = ft_smallest_int_idx(stk->values, stk->top + 1);
 	idx_stk->max = ft_largest_int_idx(stk->values, stk->top + 1);
 	idx_stk->first_wrong = fwp;
-	if (fwp == 0)
+	if (fwp == stk->top)
 		idx_stk->first_wrong = stk->top + 1;
-	while (fwp == 0 && stk->top > 1 && i > 0)
+	while (fwp ==  stk->top && stk->top > 1 && i > 0)
 	{
 		if (!find_flag)
 		{
 			if (stk_name == 'a' && stk->values[i] > stk->values[i - 1])
-				idx_stk->first_wrong = i + 1;
+				idx_stk->first_wrong = i - 1;
 			else if (stk_name == 'b' && stk->values[i] < stk->values[i - 1])
-				idx_stk->first_wrong = i + 1;
+				idx_stk->first_wrong = i - 1;
 			if (idx_stk->first_wrong < stk->top + 1)
 				find_flag = 1;
 		}
 		i--;
 	}
-	if (!find_flag)
-		idx_stk->first_wrong = 0;
+	if (!find_flag && fwp ==  stk->top)
+		idx_stk->first_wrong = stk->top;
 }
 
 static int	ft_check_partial_sort(t_stack *stk, char stk_name)

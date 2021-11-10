@@ -6,14 +6,13 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/04 22:52:11 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:30:14 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
 static void	ft_load_stack_a(int num_vals, char ***vals, t_stack *stack_a);
-static void	ft_load_values(int *values, char ***vals, int num_vals);
 static void	ft_change_values(int *values, int *aux_vector, int size);
 
 /* ************************************************************************** */
@@ -23,59 +22,41 @@ static void	ft_change_values(int *values, int *aux_vector, int size);
 /* ************************************************************************** */
 void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 {
-	int		i;
-	int		j;
 	int		num_vals;
 	char	***vals;
 
-	i = 1;
-	j = 0;
-	num_vals = 0;
-	vals = (char ***)malloc(argc * sizeof(char **));
-	while (i < argc)
-	{
-		vals[j] = ft_split(argv[i], ' ');
-		num_vals += ft_split_len(vals[j]);
-		i++;
-		j++;
-	}
-	vals[j] = NULL;
+	vals = ft_get_splited_vals(argc, argv);
+	num_vals = ft_get_num_vals(vals);
 	stack_b->size = num_vals;
 	stack_b->top = -1;
-	stack_b->values = malloc(stack_b->size * sizeof(t_stack));
+	stack_b->values = malloc(stack_b->size * sizeof(int));
 	stack_a->size = num_vals;
 	stack_a->top = num_vals - 1;
-	stack_a->values = malloc(stack_a->size * sizeof(t_stack));
 	ft_load_stack_a(num_vals, vals, stack_a);
-	i = 0;
-	while (vals[i])
-	{
-		ft_split_destroy(vals[i]);
-		i++;
-	}
-	free(vals);
+	ft_destroy_splited_vals(vals);
 }
 
 static void	ft_load_stack_a(int num_vals, char ***vals, t_stack *stack_a)
 {
 	int	*aux_vector;
 
-	aux_vector = (int *)malloc(num_vals * sizeof(int));
-	ft_load_values(stack_a->values, vals, num_vals);
-	ft_load_values(aux_vector, vals, num_vals);
+	stack_a->values = ft_load_values(vals, num_vals);
+	aux_vector = ft_load_values(vals, num_vals);
 	ft_merge_sort(aux_vector, 0, num_vals - 1);
 	ft_change_values(stack_a->values, aux_vector, num_vals);
 	free(aux_vector);
 }
 
-static void	ft_load_values(int *values, char ***vals, int num_vals)
+int	*ft_load_values(char ***vals, int num_vals)
 {
 	int	i;
 	int j;
 	int k;
+	int *values;
 
 	i = 0;
 	k = num_vals - 1;
+	values = (int *)malloc(num_vals * sizeof(int));
 	while (vals[i])
 	{
 		j = 0;
@@ -87,6 +68,7 @@ static void	ft_load_values(int *values, char ***vals, int num_vals)
 		}
 		i++;
 	}
+	return (values);
 }
 
 static void	ft_change_values(int *values, int *aux_vector, int size)
@@ -106,4 +88,51 @@ static void	ft_change_values(int *values, int *aux_vector, int size)
 		}
 		i++;
 	}
+}
+
+int	ft_get_num_vals(char ***splited_vals)
+{
+	int	i;
+	int	num_vals;
+
+	i = 0;
+	num_vals = 0;
+	while (splited_vals[i])
+	{
+		num_vals += ft_split_len(splited_vals[i]);
+		i++;
+	}
+	return (num_vals);
+}
+
+char	***ft_get_splited_vals(int argc, char **argv)
+{
+	int		i;
+	int		j;
+	char	***vals;
+
+	i = 1;
+	j = 0;
+	vals = (char ***)malloc(argc * sizeof(char **));
+	while (i < argc)
+	{
+		vals[j] = ft_split(argv[i], ' ');
+		i++;
+		j++;
+	}
+	vals[j] = NULL;
+	return (vals);
+}
+
+void	ft_destroy_splited_vals(char ***splited_vals)
+{
+	int	i;
+
+	i = 0;
+	while (splited_vals[i])
+	{
+		ft_split_destroy(splited_vals[i]);
+		i++;
+	}
+	free(splited_vals);
 }
