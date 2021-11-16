@@ -6,96 +6,99 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:30:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/15 19:06:30 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:07:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static inline int	more_three(long *a, long *b, ssize_t *cnt, long midl)
+static int	ft_partition(t_stack *stk_a, t_stack *stk_b, int push_to_b, int *i);
+static void	ft_push_to_stack_a(t_stack *stk_a, t_stack *stk_b, int pivot_a);
+static int	ft_more_three(t_stack *stk_a, t_stack *stk_b, int *cnt, int pivot);
+
+void	ft_separation_stack_a(t_stack *stk_a, t_stack *stk_b, int flag)
 {
-	push_b(b, a, TRUE);
-	if (a[0] > midl)
-	{
-		rotate_rotate(a, b, TRUE);
-		(*cnt)++;
-	}
-	else
-		rotate_b(b, TRUE);
-	return (TRUE);
-}
-
-static int			partition(long *a, long *b, ssize_t cnt_push_to_b, long *i)
-{
-	int			flag;
-	int			less_three;
-	ssize_t		cnt_rotate_a;
-
-	cnt_rotate_a = 0;
-	flag = FALSE;
-	less_three = cnt_push_to_b > 3 ? FALSE : TRUE;
-	while (cnt_push_to_b)
-		if (a[0] < i[0])
-		{
-			push_b(b, a, TRUE);
-			cnt_push_to_b--;
-		}
-		else if (!less_three && a[0] == i[0])
-			flag = more_three(a, b, &cnt_rotate_a, i[0]);
-		else
-		{
-			rotate_a(a, TRUE);
-			cnt_rotate_a++;
-		}
-	while (i[1] && cnt_rotate_a--)
-		reverse_rotate_a(a, TRUE);
-	return (flag);
-}
-
-static void			push_block_to_steck_a(long *a, long *b, long midl_a)
-{
-	ssize_t		len_b;
-
-	len_b = len_stack(b, END) - 1;
-	if (midl_a == b[len_b])
-	{
-		reverse_rotate_b(b, TRUE);
-		push_a(a, b, TRUE);
-	}
-}
-
-void	separation_steck_a(t_stack *stk_a, t_stack *stk_b, long len, int flag)
-{
-	int			flag_b;
-	ssize_t		len_a;
-	long		i[2];
-	long		cnt_push_to_b[2];
+	int	flag_b;
+	int	len_a;
+	int	i[2];
+	int	push_to_b[2];
 
 	if (stk_a->top < 3)
 	{
 		if (stk_a->top == 1)
-			sort_two_steck_a(stk_a);
+			ft_sort_two_stack_a(stk_a);
 		else if (stk_a->top == 2)
-			sort_three_steck_a(stk_a);
+			ft_sort_three_stack_a(stk_a);
 		return ;
 	}
-	cnt_push_to_b[0] = (stk_a->top + 1) / 2;
+	push_to_b[0] = (stk_a->top + 1) / 2;
 	if ((stk_a->top + 1) % 2)
-		cnt_push_to_b[0] = (stk_a->top + 1) / 2 + 1;
-	i[0] = quick_select(a, (stk_a->top + 1), cnt_push_to_b[0]);
+		push_to_b[0] = (stk_a->top + 1) / 2 + 1;
+	i[0] = quick_pivot(stk_a->values, stk_a->top + 1, push_to_b[0]);
 	i[1] = flag;
-	flag_b = partition(a, b, cnt_push_to_b[0], i);
-	separation_steck_a(a, b, block, flag);
+	flag_b = ft_partition(stk_a, stk_b, push_to_b[0], i);
+	ft_separation_stack_a(stk_a, stk_b, flag);
 	if (flag_b)
-		push_block_to_steck_a(a, b, i[0]);
-	if (cnt_push_to_b[0] != len_stack(b, END))
+		ft_push_to_stack_a(stk_a, stk_b, i[0]);
+	if (push_to_b[0] != stk_b->top + 1)
 	{
-		cnt_push_to_b[1] = TRUE;
-		separation_steck_b(a, b, len, cnt_push_to_b);
+		push_to_b[1] = 1;
+		ft_separation_stack_b(stk_a, stk_b, push_to_b);
 	}
 	else
 	{
-		cnt_push_to_b[1] = FALSE;
-		separation_steck_b(a, b, len, cnt_push_to_b);
+		push_to_b[1] = 0;
+		ft_separation_stack_b(stk_a, stk_b, push_to_b);
 	}
+}
+
+static int	ft_partition(t_stack *stk_a, t_stack *stk_b, int push_to_b, int *i)
+{
+	int	flag;
+	int	less_three;
+	int	cnt_rotate_a;
+
+	cnt_rotate_a = 0;
+	flag = 0;
+	less_three = 1;
+	if (push_to_b > 3)
+		less_three = 0;
+	while (push_to_b)
+		if (stk_a->values[0] < i[0])
+		{
+			ft_push(stk_b, stk_a, 'b');
+			push_to_b--;
+		}
+		else if (!less_three && stk_a->values[0] == i[0])
+			flag = ft_more_three(stk_a, stk_b, &cnt_rotate_a, i[0]);
+		else
+		{
+			ft_rotate(stk_a, 'a');
+			cnt_rotate_a++;
+		}
+	while (i[1] && cnt_rotate_a--)
+		ft_reverse_rotate(stk_a, 'a');
+	return (flag);
+}
+
+static void	ft_push_to_stack_a(t_stack *stk_a, t_stack *stk_b, int pivot_a)
+{
+	if (pivot_a == stk_b->values[stk_b->top])
+	{
+		ft_reverse_rotate(stk_b, 'b');
+		ft_push(stk_a, stk_b, 'a');
+	}
+}
+
+static int	ft_more_three(t_stack *stk_a, t_stack *stk_b, int *cnt, int pivot)
+{
+	ft_push(stk_b, stk_a, 'b');
+	if (stk_a->values[0] > pivot)
+	{
+		ft_rotate_both(stk_a, stk_b);
+		(*cnt)++;
+	}
+	else
+		ft_rotate(stk_b, 'b');
+	return (1);
 }

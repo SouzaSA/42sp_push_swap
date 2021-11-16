@@ -30,9 +30,15 @@ SRCS			=	ft_check_args.c	\
 					ft_handler_swap.c	\
 					ft_load_stack.c	\
 					ft_main.c	\
+					ft_manage_stk_a.c	\
+					ft_manage_stk_b.c	\
 					ft_order_small_mess.c	\
 					ft_push_swap.c	\
-					ft_quick_sort_ps.c
+					ft_quick_pivot.c	\
+					ft_quick_sort_ps.c	\
+					ft_sort_stack_a.c	\
+					ft_sort_stack_b.c	\
+					ft_sort.c
 
 BONUS			=
 

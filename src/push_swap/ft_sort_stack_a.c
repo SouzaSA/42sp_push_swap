@@ -6,69 +6,73 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:07:40 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/15 19:07:52 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:04:13 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void				sort_two_steck_a(long *a)
+static void	ft_a0_equal_pivot(t_stack *stk_a, int pivot);
+static void	ft_a1_equal_pivot(t_stack *stk_a, int pivot);
+static void	ft_a2_equal_pivot(t_stack *stk_a, int pivot);
+
+void	ft_sort_two_steck_a(t_stack *stk_a)
 {
-	if (a[0] > a[1])
-		swap_a(a, TRUE);
+	if (stk_a->values[0] > stk_a->values[1])
+		ft_swap_one(stk_a, 'a');
 }
 
-static inline void	a0_equal_midl_a(long *a, long midl_a)
+void	ft_sort_three_steck_a(t_stack *stk_a, int len)
 {
-	if (a[1] < midl_a)
-		swap_a(a, TRUE);
+	int	pivot;
+
+	pivot = ft_quick_pivot(stk_a, len, 1);
+	if (stk_a->values[0] == pivot)
+		ft_a0_equal_pivot(stk_a, pivot);
+	else if (stk_a->values[1] == pivot)
+		ft_a1_equal_pivot(stk_a, pivot);
+	else
+		ft_a2_equal_pivot(stk_a, pivot);
+}
+
+static void	ft_a0_equal_pivot(t_stack *stk_a, int pivot)
+{
+	if (stk_a->values[1] < pivot)
+		ft_swap_one(stk_a, 'a');
 	else
 	{
-		rotate_a(a, TRUE);
-		swap_a(a, TRUE);
-		reverse_rotate_a(a, TRUE);
-		swap_a(a, TRUE);
+		ft_rotate_one(stk_a, 'a');
+		ft_swap_one(stk_a, 'a');
+		ft_reverse_rotate(stk_a, 'a');
+		ft_swap_one(stk_a, 'a');
 	}
 }
 
-static inline void	a1_equal_midl_a(long *a, long midl_a)
+static void	ft_a1_equal_pivot(t_stack *stk_a, int pivot)
 {
-	if (a[0] > midl_a)
+	if (stk_a->values[0] > pivot)
 	{
-		swap_a(a, TRUE);
-		rotate_a(a, TRUE);
-		swap_a(a, TRUE);
-		reverse_rotate_a(a, TRUE);
-		swap_a(a, TRUE);
+		ft_swap_one(stk_a, 'a');
+		ft_rotate(stk_a, 'a');
+		ft_swap_one(stk_a, 'a');
+		ft_reverse_rotate(stk_a, 'a');
+		ft_swap_one(stk_a, 'a');
 	}
 }
 
-static inline void	a2_equal_midl_a(long *a, long midl_a)
+static void	ft_a2_equal_pivot(t_stack *stk_a, int pivot)
 {
-	if (a[0] < midl_a)
+	if (stk_a->values[0] < pivot)
 	{
-		rotate_a(a, TRUE);
-		sort_two_steck_a(a);
-		reverse_rotate_a(a, TRUE);
+		ft_rotate(stk_a, 'a');
+		ft_sort_two_steck_a(stk_a);
+		ft_reverse_rotate(stk_a, 'a');
 	}
 	else
 	{
-		swap_a(a, TRUE);
-		rotate_a(a, TRUE);
-		swap_a(a, TRUE);
-		reverse_rotate_a(a, TRUE);
+		ft_swap_one(stk_a, 'a');
+		ft_rotate(stk_a, 'a');
+		ft_swap_one(stk_a, 'a');
+		ft_reverse_rotate_a(stk_a, 'a');
 	}
-}
-
-void				sort_three_steck_a(long *a, ssize_t len)
-{
-	long	midl_a;
-
-	midl_a = quick_select(a, len, 1);
-	if (a[0] == midl_a)
-		a0_equal_midl_a(a, midl_a);
-	else if (a[1] == midl_a)
-		a1_equal_midl_a(a, midl_a);
-	else
-		a2_equal_midl_a(a, midl_a);
 }

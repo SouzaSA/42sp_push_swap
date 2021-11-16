@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/15 12:07:55 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:07:24 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	ft_merge_sort(int *values, int start, int end);
 int		ft_push_swap(t_stack *stk_a, t_stack *stk_b);
 void	ft_order_small_mess(t_stack *stk_a, t_stack *stk_b);
 void	ft_manage_a(t_stack *stk_a, t_stack *stk_b, int size);
+
+void	ft_separation_stack_a(t_stack *stk_a, t_stack *stk_b, int flag);
+
 
 int		*ft_load_values(char ***vals, int num_vals);
 void	ft_destroy_splited_vals(char ***splited_vals);
