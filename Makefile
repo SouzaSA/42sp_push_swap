@@ -30,9 +30,9 @@ SRCS			=	ft_check_args.c	\
 					ft_handler_swap.c	\
 					ft_load_stack.c	\
 					ft_main.c	\
-					ft_order_big_mess.c	\
 					ft_order_small_mess.c	\
-					ft_push_swap.c
+					ft_push_swap.c	\
+					ft_quick_sort_ps.c
 
 BONUS			=
 
@@ -50,10 +50,10 @@ DIR_GUARD		=	@mkdir -p ${@D}
 
 ${OBJ_DIR}/%.o:	${SRC_DIR}/%.c
 				${DIR_GUARD}
-				make -C ${LIBFT_DIR}
 				${CC} ${CFLAGS} ${INCS} -c $< -o $@
 
 ${NAME}:		${OBJS}
+				make -C ${LIBFT_DIR}
 				${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 all:			${NAME}

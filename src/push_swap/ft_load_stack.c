@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/10 11:30:14 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/14 17:12:50 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 	stack_b->values = malloc(stack_b->size * sizeof(int));
 	stack_a->size = num_vals;
 	stack_a->top = num_vals - 1;
+	stack_a->values = NULL;
 	ft_load_stack_a(num_vals, vals, stack_a);
 	ft_destroy_splited_vals(vals);
 }

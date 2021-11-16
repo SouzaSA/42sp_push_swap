@@ -55,7 +55,8 @@ PUT				=	ft_putchar_fd.c	\
 					ft_putnbr_fd.c	\
 					ft_putstr_fd.c
 
-SORT			=	ft_merge_sort.c
+SORT			=	ft_merge_sort.c	\
+					ft_quick_sort.c
 
 STR				=	ft_atoi.c	\
 					ft_itoa.c	\

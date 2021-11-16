@@ -1,35 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_shared.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/14 19:26:20 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/11/14 23:22:22 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/11/14 23:25:22 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#ifndef FT_SHARED_H
+# define FT_SHARED_H
+# include "libft.h"
 
-int	main(int argc, char **argv)
-{
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	if (argc > 1)
-	{
-		if (!ft_check_args(argc, argv))
-		{
-			ft_load(argc, argv, &stack_a, &stack_b);
-			ft_push_swap(&stack_a, &stack_b);
-			ft_destroy_stacks(&stack_a, &stack_b);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
-	}
-	return (0);
-}
+#endif
