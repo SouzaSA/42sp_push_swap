@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:08:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/16 09:30:21 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/17 13:11:34 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static void	ft_b0_equal_pivot(t_stack *stk_a, t_stack *stk_b, int pivot);
 static void	ft_b1_equal_pivot(t_stack *stk_a, t_stack *stk_b, int pivot);
 static void	ft_b2_equal_pivot(t_stack *stk_a, t_stack *stk_b, int pivot);
 
-void	ft_sort_two_steck_b(t_stack *stk_a, t_stack *stk_b)
+void	ft_sort_two_stack_b(t_stack *stk_a, t_stack *stk_b)
 {
 	if (stk_b->values[0] < stk_b->values[1])
-		ft_swap_one(stk_b, 'a');
+		ft_swap_one(stk_b, 'b');
 	ft_push(stk_a, stk_b, 'a');
 	ft_push(stk_a, stk_b, 'a');
 }
 
-void	ft_sort_three_steck_b(t_stack *stk_a, t_stack *stk_b, int len)
+void	ft_sort_three_stack_b(t_stack *stk_a, t_stack *stk_b, int len)
 {
 	int	pivot;
 
@@ -80,12 +80,12 @@ static void	ft_b2_equal_pivot(t_stack *stk_a, t_stack *stk_b, int pivot)
 	if (stk_b->values[0] > pivot)
 	{
 		ft_push(stk_a, stk_b, 'a');
-		ft_sort_two_steck_b(stk_a, stk_b);
+		ft_sort_two_stack_b(stk_a, stk_b);
 	}
 	else
 	{
 		ft_swap_one(stk_b, 'b');
-		ft_push_a(stk_a, stk_b, 'a');
-		ft_sort_two_steck_b(stk_a, stk_b);
+		ft_push(stk_a, stk_b, 'a');
+		ft_sort_two_stack_b(stk_a, stk_b);
 	}
 }

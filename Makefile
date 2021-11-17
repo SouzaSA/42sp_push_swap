@@ -35,7 +35,6 @@ SRCS			=	ft_check_args.c	\
 					ft_order_small_mess.c	\
 					ft_push_swap.c	\
 					ft_quick_pivot.c	\
-					ft_quick_sort_ps.c	\
 					ft_sort_stack_a.c	\
 					ft_sort_stack_b.c	\
 					ft_sort.c

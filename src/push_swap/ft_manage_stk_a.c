@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:30:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/16 17:07:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:45:18 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,42 @@ static int	ft_partition(t_stack *stk_a, t_stack *stk_b, int push_to_b, int *i);
 static void	ft_push_to_stack_a(t_stack *stk_a, t_stack *stk_b, int pivot_a);
 static int	ft_more_three(t_stack *stk_a, t_stack *stk_b, int *cnt, int pivot);
 
-void	ft_separation_stack_a(t_stack *stk_a, t_stack *stk_b, int flag)
+void	ft_separate_stk_a(t_stack *stk_a, t_stack *stk_b, int blk, int flag)
 {
 	int	flag_b;
-	int	len_a;
+	int	len_blk_a;
 	int	i[2];
 	int	push_to_b[2];
 
-	if (stk_a->top < 3)
+	len_blk_a = blk;
+	if (blk < 0)
+		len_blk_a = stk_a->top + 1;
+	if (len_blk_a < 4)
 	{
-		if (stk_a->top == 1)
+		if (len_blk_a == 2)
 			ft_sort_two_stack_a(stk_a);
-		else if (stk_a->top == 2)
-			ft_sort_three_stack_a(stk_a);
+		else if (len_blk_a == 3)
+			ft_sort_three_stack_a(stk_a, len_blk_a);
 		return ;
 	}
-	push_to_b[0] = (stk_a->top + 1) / 2;
-	if ((stk_a->top + 1) % 2)
-		push_to_b[0] = (stk_a->top + 1) / 2 + 1;
-	i[0] = quick_pivot(stk_a->values, stk_a->top + 1, push_to_b[0]);
+	push_to_b[0] = len_blk_a / 2;
+	if (len_blk_a % 2)
+		push_to_b[0] = len_blk_a / 2 + 1;
+	i[0] = ft_quick_pivot(stk_a->values, len_blk_a, push_to_b[0]);
 	i[1] = flag;
 	flag_b = ft_partition(stk_a, stk_b, push_to_b[0], i);
-	ft_separation_stack_a(stk_a, stk_b, flag);
+	ft_separate_stk_a(stk_a, stk_b, -1, flag);
 	if (flag_b)
 		ft_push_to_stack_a(stk_a, stk_b, i[0]);
 	if (push_to_b[0] != stk_b->top + 1)
 	{
 		push_to_b[1] = 1;
-		ft_separation_stack_b(stk_a, stk_b, push_to_b);
+		ft_separate_stk_b(stk_a, stk_b, blk, push_to_b);
 	}
 	else
 	{
 		push_to_b[1] = 0;
-		ft_separation_stack_b(stk_a, stk_b, push_to_b);
+		ft_separate_stk_b(stk_a, stk_b, blk, push_to_b);
 	}
 }
 
