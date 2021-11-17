@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:07:40 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/17 10:56:36 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/17 20:54:10 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_a2_equal_pivot(t_stack *stk_a, int pivot);
 
 void	ft_sort_two_stack_a(t_stack *stk_a)
 {
-	if (stk_a->values[0] > stk_a->values[1])
+	if (stk_a->values[0] < stk_a->values[1])
 		ft_swap_one(stk_a, 'a');
 }
 
