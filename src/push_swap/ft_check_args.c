@@ -6,13 +6,14 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/10 11:30:50 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:14:51 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
 static int	ft_has_invalid(char **argv);
+static int	ft_check_value(char *nb);
 static int	ft_has_duplicates(int *values, int size);
 
 /* ************************************************************************** */
@@ -51,12 +52,12 @@ int	ft_check_args(int argc, char **argv)
 
 static int	ft_has_invalid(char **vals)
 {
-	int	i;
-	int	j;
-	int	arg_len;
-	int	error;
+	int		i;
+	int		j;
+	int		arg_len;
+	int		error;
 
-	i = 1;
+	i = 0;
 	error = 0;
 	while (vals[i])
 	{
@@ -65,14 +66,26 @@ static int	ft_has_invalid(char **vals)
 		while (j < arg_len)
 		{
 			if (!ft_isdigit(vals[i][j]))
-			{
 				error = 1;
-			}
 			j++;
 		}
+		if (!error)
+			ft_check_value(vals[i]);
 		i++;
 	}
 	return (error);
+}
+
+static int	ft_check_value(char *nb)
+{
+	int 	error;
+	long	number;
+
+	error = 0;
+	number = ft_atoi(nb);
+	if (number < MIN_I || number > MAX_I || (ft_strlen(nb) > 1 && number == 0))
+		error = 1;
+	return (number);
 }
 
 static int	ft_has_duplicates(int *values, int size)

@@ -6,23 +6,17 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/17 10:50:20 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:46:44 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
 # include "libft.h"
+#include <stdio.h>//tirar
 
 # define MAX_I 2147483647
 # define MIN_I -2147483648
-
-typedef struct s_idxs
-{
-	int	min;
-	int	max;
-	int first_wrong;
-}	t_idxs;
 
 typedef struct s_stack
 {
@@ -49,7 +43,7 @@ void	ft_manage_a(t_stack *stk_a, t_stack *stk_b, int size);
 
 void	ft_separate_stk_a(t_stack *stk_a, t_stack *stk_b, int blk, int flag);
 void	ft_separate_stk_b(t_stack *stk_a, t_stack *stk_b, int blk_a, int *cnt_b);
-int		ft_quick_pivot(int *array, int len, int k);
+int		ft_quick_pivot(t_stack *stk, int len, int k);
 void	ft_sort_two_stack_a(t_stack *stk_a);
 void	ft_sort_three_stack_a(t_stack *stk_a, int len);
 void	ft_sort_two_stack_b(t_stack *stk_a, t_stack *stk_b);

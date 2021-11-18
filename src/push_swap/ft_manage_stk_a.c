@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:30:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/17 10:45:18 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:36:53 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	ft_separate_stk_a(t_stack *stk_a, t_stack *stk_b, int blk, int flag)
 	int	push_to_b[2];
 
 	len_blk_a = blk;
-	if (blk < 0)
-		len_blk_a = stk_a->top + 1;
 	if (len_blk_a < 4)
 	{
 		if (len_blk_a == 2)
@@ -37,16 +35,16 @@ void	ft_separate_stk_a(t_stack *stk_a, t_stack *stk_b, int blk, int flag)
 	push_to_b[0] = len_blk_a / 2;
 	if (len_blk_a % 2)
 		push_to_b[0] = len_blk_a / 2 + 1;
-	i[0] = ft_quick_pivot(stk_a->values, len_blk_a, push_to_b[0]);
+	i[0] = ft_quick_pivot(stk_a, len_blk_a, push_to_b[0]);
 	i[1] = flag;
 	flag_b = ft_partition(stk_a, stk_b, push_to_b[0], i);
-	ft_separate_stk_a(stk_a, stk_b, -1, flag);
+	ft_separate_stk_a(stk_a, stk_b, stk_a->top + 1, flag);
 	if (flag_b)
 		ft_push_to_stack_a(stk_a, stk_b, i[0]);
 	if (push_to_b[0] != stk_b->top + 1)
 	{
 		push_to_b[1] = 1;
-		ft_separate_stk_b(stk_a, stk_b, blk, push_to_b);
+		ft_separate_stk_b(stk_a, stk_b, stk_a->top + 1, push_to_b);
 	}
 	else
 	{
@@ -67,12 +65,12 @@ static int	ft_partition(t_stack *stk_a, t_stack *stk_b, int push_to_b, int *i)
 	if (push_to_b > 3)
 		less_three = 0;
 	while (push_to_b)
-		if (stk_a->values[0] < i[0])
+		if (stk_a->values[stk_a->top] < i[0])
 		{
-			ft_push(stk_b, stk_a, 'b');
+			ft_push(stk_a, stk_b, 'b');
 			push_to_b--;
 		}
-		else if (!less_three && stk_a->values[0] == i[0])
+		else if (!less_three && stk_a->values[stk_a->top] == i[0])
 			flag = ft_more_three(stk_a, stk_b, &cnt_rotate_a, i[0]);
 		else
 		{
@@ -95,8 +93,8 @@ static void	ft_push_to_stack_a(t_stack *stk_a, t_stack *stk_b, int pivot_a)
 
 static int	ft_more_three(t_stack *stk_a, t_stack *stk_b, int *cnt, int pivot)
 {
-	ft_push(stk_b, stk_a, 'b');
-	if (stk_a->values[0] > pivot)
+	ft_push(stk_a, stk_b, 'b');
+	if (stk_a->values[stk_b->top] > pivot)
 	{
 		ft_rotate_both(stk_a, stk_b);
 		(*cnt)++;

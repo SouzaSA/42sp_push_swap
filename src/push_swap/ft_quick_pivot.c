@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:06:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/17 10:23:52 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:55:20 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	qselect(int *array, int len, int k);
 static void	ft_swap(int *array, int pos_a, int pos_b);
 
-int	ft_quick_pivot(int *array, int len, int k)
+int	ft_quick_pivot(t_stack *stk, int len, int k)
 {
 	int	i;
 	int	pivot;
@@ -25,7 +25,7 @@ int	ft_quick_pivot(int *array, int len, int k)
 	i = 0;
 	while (i < len)
 	{
-		tmp[i] = array[i];
+		tmp[len - 1 - i] = stk->values[stk->top - i];
 		i++;
 	}
 	pivot = qselect(tmp, len, k);

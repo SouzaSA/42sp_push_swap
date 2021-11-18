@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 14:16:21 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/17 10:48:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:14:25 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_separate_stk_b(t_stack *stk_a, t_stack *stk_b, int blk_a, int *cnt_b)
 	cnt_push_to_a = cnt_b[0] / 2 - 1;
 	if (cnt_b[0] % 2)
 		cnt_push_to_a = cnt_b[0] / 2;
-	pivot = ft_quick_pivot(stk_b->values, cnt_b[0], cnt_push_to_a);
+	pivot = ft_quick_pivot(stk_b, cnt_b[0], cnt_push_to_a);
 	cnt_rotate_b = ft_partition(stk_a, stk_b, pivot, cnt_b[0]);
 	ft_separate_stk_a(stk_a, stk_b, blk_a, 1);
 	ft_reverse_rotate_both(stk_a, stk_b);
