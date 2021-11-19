@@ -23,6 +23,7 @@ SAN				=	-g -fsanitize=address
 
 SRCS			=	ft_check_args.c	\
 					ft_check_ordered.c	\
+					ft_check_reverse_ordered.c	\
 					ft_destroy_stack.c	\
 					ft_handler_push.c	\
 					ft_handler_reverse_rotate.c	\
@@ -34,9 +35,14 @@ SRCS			=	ft_check_args.c	\
 					ft_manage_stk_b.c	\
 					ft_push_swap.c	\
 					ft_quick_pivot.c	\
+					ft_sort_four.c	\
+					ft_sort_stack_a_three.c	\
+					ft_sort_stack_a_two.c	\
 					ft_sort_stack_a.c	\
-					ft_sort_stack_b.c	\
-					ft_sort.c
+					ft_sort_stack_b_three.c	\
+					ft_sort_stack_b_two.c	\
+					ft_sort_three.c \
+					ft_write_move.c
 
 BONUS			=
 
