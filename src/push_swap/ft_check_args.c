@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 17:14:51 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:34:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ static int	ft_has_invalid(char **vals)
 		arg_len = ft_strlen(vals[i]);
 		while (j < arg_len)
 		{
-			if (!ft_isdigit(vals[i][j]))
+			if (!ft_isdigit(vals[i][j]) && vals[i][j] != '+'
+				&& vals[i][j] != '-')
+			{
 				error = 1;
+			}
 			j++;
 		}
 		if (!error)
-			ft_check_value(vals[i]);
+			error = ft_check_value(vals[i]);
 		i++;
 	}
 	return (error);
@@ -83,9 +86,9 @@ static int	ft_check_value(char *nb)
 
 	error = 0;
 	number = ft_atoi(nb);
-	if (number < MIN_I || number > MAX_I || (ft_strlen(nb) > 1 && number == 0))
+	if ((number < 0 && nb[0] != '-') || (number > 0 && nb[0] == '-'))
 		error = 1;
-	return (number);
+	return (error);
 }
 
 static int	ft_has_duplicates(int *values, int size)

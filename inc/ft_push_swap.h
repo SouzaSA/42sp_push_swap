@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 16:46:44 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:39:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include "libft.h"
 #include <stdio.h>//tirar
 
-# define MAX_I 2147483647
-# define MIN_I -2147483648
+# define MAX_I 2147483647 //tirar
+# define MIN_I -2147483648 //tirar
 
 typedef struct s_stack
 {
