@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 16:46:44 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 10:26:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ void	ft_sort_three_stack_a(t_stack *stk_a, int len);
 void	ft_sort_two_stack_b(t_stack *stk_a, t_stack *stk_b);
 void	ft_sort_three_stack_b(t_stack *stk_a, t_stack *stk_b, int len);
 
-int		check_rev(t_stack *stk_a, t_stack *stk_b);
+int		ft_check_reverse_ordered(t_stack *stk_a, t_stack *stk_b);
 void	ft_sort_stack_a(t_stack *stk_a, t_stack *stk_b, int len);
 void	ft_sort_three(t_stack *stk_a, int len);
+void	ft_sort_four(t_stack *stk_a, t_stack *stk_b, int len);
 
 
 int		*ft_load_values(char ***vals, int num_vals);

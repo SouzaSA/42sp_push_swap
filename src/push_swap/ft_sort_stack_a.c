@@ -6,72 +6,69 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:07:40 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 14:58:19 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 09:49:54 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void	ft_a_top_equal_pivot(t_stack *stk_a, int pivot);
-static void	ft_a_top_minus1_equal_pivot(t_stack *stk_a, int pivot);
-static void	ft_a_top_minus2_equal_pivot(t_stack *stk_a, int pivot);
+static void	ft_sort_a(t_stack *stk_a, int pivot_a);
 
-void	ft_sort_two_stack_a(t_stack *stk_a)
+void	ft_sort_stack_a(t_stack *stk_a, t_stack *stk_b, int len)
 {
-	if (stk_a->values[0] < stk_a->values[1])
-		ft_swap_one(stk_a, 'a');
-}
+	int	pivot_a;
+	int	pivot_b;
+	int	cnt;
 
-void	ft_sort_three_stack_a(t_stack *stk_a, int len)
-{
-	int	pivot;
-
-	pivot = ft_quick_pivot(stk_a, len, 1);
-	if (stk_a->values[stk_a->top] == pivot)
-		ft_a_top_equal_pivot(stk_a, pivot);
-	else if (stk_a->values[stk_a->top - 1] == pivot)
-		ft_a_top_minus1_equal_pivot(stk_a, pivot);
-	else
-		ft_a_top_minus2_equal_pivot(stk_a, pivot);
-}
-
-static void	ft_a_top_equal_pivot(t_stack *stk_a, int pivot)
-{
-	if (stk_a->values[stk_a->top - 1] < pivot)
-		ft_swap_one(stk_a, 'a');
-	else
+	cnt = len / 2;
+	pivot_a = ft_quick_pivot(stk_a, len, cnt);
+	pivot_b = ft_quick_pivot(stk_a, len, 1);
+	while (cnt)
 	{
-		ft_rotate(stk_a, 'a');
-		ft_swap_one(stk_a, 'a');
-		ft_reverse_rotate(stk_a, 'a');
-		ft_swap_one(stk_a, 'a');
+		if (stk_a->values[stk_a->top] < pivot_a)
+		{
+			ft_push(stk_a, stk_b, 'b');
+			if (stk_b->top > 0 && stk_b->values[stk_b->top] < pivot_b)
+				ft_rotate(stk_b, 'b');
+			cnt--;
+		}
+		else
+			ft_rotate(stk_a, 'a');
 	}
+	pivot_a = ft_quick_pivot(stk_a, stk_a->top + 1, 1);
+	ft_sort_a(stk_a, pivot_a);
+	cnt = stk_b->top + 1;
+	if (cnt == 2)
+		ft_sort_two_stack_b(stk_a, stk_b);
+	else
+		ft_sort_three_stack_b(stk_a, stk_b, cnt);
 }
 
-static void	ft_a_top_minus1_equal_pivot(t_stack *stk_a, int pivot)
+static void	ft_sort_a(t_stack *stk_a, int pivot_a)
 {
-	if (stk_a->values[stk_a->top] > pivot)
+	if (stk_a->values[stk_a->top] == pivot_a)
 	{
-		ft_swap_one(stk_a, 'a');
-		ft_rotate(stk_a, 'a');
-		ft_swap_one(stk_a, 'a');
-		ft_reverse_rotate(stk_a, 'a');
-		ft_swap_one(stk_a, 'a');
+		if (stk_a->values[stk_a->top - 1] > pivot_a)
+			ft_reverse_rotate(stk_a, 'a');
+		else
+			ft_swap_one(stk_a, 'a');
 	}
-}
-static void	ft_a_top_minus2_equal_pivot(t_stack *stk_a, int pivot)
-{
-	if (stk_a->values[stk_a->top] < pivot)
+	else if (stk_a->values[stk_a->top - 1] == pivot_a)
 	{
-		ft_rotate(stk_a, 'a');
-		ft_sort_two_stack_a(stk_a);
-		ft_reverse_rotate(stk_a, 'a');
+		if (stk_a->values[stk_a->top] > pivot_a)
+		{
+			ft_rotate(stk_a, 'a');
+			ft_swap_one(stk_a, 'a');
+		}
 	}
 	else
 	{
-		ft_swap_one(stk_a, 'a');
-		ft_rotate(stk_a, 'a');
-		ft_swap_one(stk_a, 'a');
-		ft_reverse_rotate(stk_a, 'a');
+		if (stk_a->values[stk_a->top] > pivot_a)
+			ft_rotate(stk_a, 'a');
+		else
+		{
+			ft_swap_one(stk_a, 'a');
+			ft_rotate(stk_a, 'a');
+		}
 	}
 }
