@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:08:02 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/09 16:32:42 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 12:01:30 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_rotate_worker(t_stack *stack)
 /* rotate - shift up all elements of a stack by 1. The first element becomes  */
 /* the last one. Print "ra" or "rb" message.                                  */
 /* ************************************************************************** */
-void	ft_rotate(t_stack *stack, char name)
+void	ft_rotate(t_stack *stack, char name, t_list **cmds)
 {
 	char	print_val[3];
 
@@ -43,16 +43,16 @@ void	ft_rotate(t_stack *stack, char name)
 	print_val[1] = name;
 	print_val[2] = '\n';
 	ft_rotate_worker(stack);
-	write(1, print_val, 3);
+	ft_lstadd_back(cmds, ft_lstnew(ft_strdup(print_val)));
 }
 
 /* ************************************************************************** */
 /* rotate both - shift up all elements of both stacks by 1. The first element */
 /* becomes the last one, in both stacks. Print "rr".                          */
 /* ************************************************************************** */
-void	ft_rotate_both(t_stack *stack_a, t_stack *stack_b)
+void	ft_rotate_both(t_vars *vars)
 {
-	ft_rotate_worker(stack_a);
-	ft_rotate_worker(stack_b);
-	write(1, "rr\n", 3);
+	ft_rotate_worker(&vars->stk_a);
+	ft_rotate_worker(&vars->stk_b);
+	ft_lstadd_back(&vars->cmds, ft_lstnew(ft_strdup("rr\n")));
 }

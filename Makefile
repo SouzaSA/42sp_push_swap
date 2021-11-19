@@ -41,7 +41,8 @@ SRCS			=	ft_check_args.c	\
 					ft_sort_stack_a.c	\
 					ft_sort_stack_b_three.c	\
 					ft_sort_stack_b_two.c	\
-					ft_sort_three.c
+					ft_sort_three.c \
+					ft_write_move.c
 
 BONUS			=
 

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:05:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/02 19:43:01 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 12:02:38 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_swap(t_stack *stack)
 /* swap one - swap the first 2 elements at the top of a stack. Do nothing if  */
 /* there is only one or no elements. Name refers to to wich stack is in use.  */
 /* ************************************************************************** */
-void	ft_swap_one(t_stack *stack, char name)
+void	ft_swap_one(t_stack *stack, char name, t_list **cmds)
 {
 	char	print_val[3];
 
@@ -38,7 +38,7 @@ void	ft_swap_one(t_stack *stack, char name)
 		print_val[1] = name;
 		print_val[2] = '\n';
 		ft_swap(stack);
-		write(1, print_val, 3);
+		ft_lstadd_back(cmds, ft_lstnew(ft_strdup(print_val)));
 	}
 }
 
@@ -46,12 +46,12 @@ void	ft_swap_one(t_stack *stack, char name)
 /* swap both - swap the first 2 elements at the top of both stacks at same    */
 /* time.                                                                      */
 /* ************************************************************************** */
-void	ft_swap_both(t_stack *stack_a, t_stack *stack_b)
+void	ft_swap_both(t_vars *vars)
 {
-	if (stack_a->top > 0 && stack_b->top > 0)
+	if (vars->stk_a.top > 0 && vars->stk_b.top > 0)
 	{
-		ft_swap(stack_a);
-		ft_swap(stack_b);
-		write(1, "ss\n", 3);
+		ft_swap(&vars->stk_a);
+		ft_swap(&vars->stk_b);
+		ft_lstadd_back(&vars->cmds, ft_lstnew(ft_strdup("ss\n")));
 	}
 }

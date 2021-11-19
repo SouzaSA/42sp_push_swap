@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_write_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 12:49:45 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/11/19 13:24:51 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/11/19 13:25:17 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_write_move(void *str)
 {
-	t_vars	vars;
-
-	if (argc > 1)
-	{
-		if (!ft_check_args(argc, argv))
-		{
-			ft_load(argc, argv, &vars);
-			ft_push_swap(&vars);
-			ft_destroy_stacks(&vars);
-		}
-		else
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
-	}
-	return (0);
+	write(1, (char *)str, ft_strlen((char *)str));
 }

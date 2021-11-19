@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/24 11:58:20 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:13:23 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /* destroy stacks - free alloced memory on stacks values, and set top and     */
 /* size to right values.                                                      */
 /* ************************************************************************** */
-void	ft_destroy_stacks(t_stack *stack_a, t_stack *stack_b)
+void	ft_destroy_stacks(t_vars *vars)
 {
-	stack_a->top = -1;
-	stack_a->size = 0;
-	free(stack_a->values);
-	stack_b->top = -1;
-	stack_b->size = 0;
-	free(stack_b->values);
+	vars->stk_a.top = -1;
+	vars->stk_a.size = 0;
+	free(vars->stk_a.values);
+	vars->stk_b.top = -1;
+	vars->stk_b.size = 0;
+	free(vars->stk_b.values);
 }

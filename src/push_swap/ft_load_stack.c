@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:20:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/14 17:12:50 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:15:38 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ static void	ft_change_values(int *values, int *aux_vector, int size);
 /* size and set top index value, -1 is for empty stack. Change vector values  */
 /* to a consecutive values. ex. {10, 3, 15, 44, 1, 999} => {2, 1, 3, 4, 0, 5} */
 /* ************************************************************************** */
-void	ft_load(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
+void	ft_load(int argc, char **argv, t_vars *vars)
 {
 	int		num_vals;
 	char	***vals;
 
 	vals = ft_get_splited_vals(argc, argv);
 	num_vals = ft_get_num_vals(vals);
-	stack_b->size = num_vals;
-	stack_b->top = -1;
-	stack_b->values = malloc(stack_b->size * sizeof(int));
-	stack_a->size = num_vals;
-	stack_a->top = num_vals - 1;
-	stack_a->values = NULL;
-	ft_load_stack_a(num_vals, vals, stack_a);
+	vars->stk_b.size = num_vals;
+	vars->stk_b.top = -1;
+	vars->stk_b.values = malloc(vars->stk_b.size * sizeof(int));
+	vars->stk_a.size = num_vals;
+	vars->stk_a.top = num_vals - 1;
+	vars->stk_a.values = NULL;
+	ft_load_stack_a(num_vals, vals, &vars->stk_a);
 	ft_destroy_splited_vals(vals);
 }
 
