@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 21:49:43 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/21 22:37:03 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_vars
 	t_stack	stk_b;
 	t_list	*cmds;
 }	t_vars;
-
 
 int		ft_check_args(int argc, char **argv);
 int		ft_is_ordered_stk_a(t_stack *stk_a);
