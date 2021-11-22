@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:30:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 22:30:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/22 19:13:34 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ static int	ft_partition(t_vars *vars, int push_to_b, int pivot, int flag)
 {
 	int	cnt_rotate_a;
 	int	pivot_moved;
+	int	less_three;
 
 	cnt_rotate_a = 0;
 	pivot_moved = 0;
+	less_three = push_to_b > 3;
 	while (push_to_b)
 	{
 		if (vars->stk_a.values[vars->stk_a.top] < pivot)
@@ -66,7 +68,7 @@ static int	ft_partition(t_vars *vars, int push_to_b, int pivot, int flag)
 			ft_push(vars, 'b');
 			push_to_b--;
 		}
-		else if (push_to_b > 3 && vars->stk_a.values[vars->stk_a.top] == pivot)
+		else if (!less_three && vars->stk_a.values[vars->stk_a.top] == pivot)
 			pivot_moved = ft_push_pivot(vars, &cnt_rotate_a, pivot);
 		else
 		{

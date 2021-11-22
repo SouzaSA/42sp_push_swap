@@ -6,13 +6,13 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:10:34 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/22 09:18:44 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/22 19:14:23 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void ft_change_isspace_to_space(char *str);
+static void	ft_change_isspace_to_space(char *str);
 
 char	***ft_get_splited_vals(int argc, char **argv)
 {
@@ -37,7 +37,7 @@ char	***ft_get_splited_vals(int argc, char **argv)
 	return (vals);
 }
 
-static void ft_change_isspace_to_space(char *str)
+static void	ft_change_isspace_to_space(char *str)
 {
 	int	i;
 
