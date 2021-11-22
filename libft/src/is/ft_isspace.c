@@ -6,13 +6,13 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 12:02:25 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 22:47:34 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/22 14:44:18 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isspace(int c)
+int	ft_isspace(int c)
 {
 	int	is_space;
 
