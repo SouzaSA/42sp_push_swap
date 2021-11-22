@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:07:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 11:59:42 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:06:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ void	ft_push_worker(t_stack *stack_x, t_stack *stack_y)
 /* ************************************************************************** */
 void	ft_push(t_vars *vars, char name)
 {
-	char	print_val[3];
+	char	print_val[4];
 
 	print_val[0] = 'p';
 	print_val[1] = name;
 	print_val[2] = '\n';
+	print_val[3] = '\0';
 	if (name == 'a')
 		ft_push_worker(&vars->stk_a, &vars->stk_b);
 	if (name == 'b')

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:08:02 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 12:01:30 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:06:51 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ void	ft_rotate_worker(t_stack *stack)
 /* ************************************************************************** */
 void	ft_rotate(t_stack *stack, char name, t_list **cmds)
 {
-	char	print_val[3];
+	char	print_val[4];
 
 	print_val[0] = 'r';
 	print_val[1] = name;
 	print_val[2] = '\n';
+	print_val[3] = '\0';
 	ft_rotate_worker(stack);
 	ft_lstadd_back(cmds, ft_lstnew(ft_strdup(print_val)));
 }

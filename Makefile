@@ -24,12 +24,16 @@ SAN				=	-g -fsanitize=address
 SRCS			=	ft_check_args.c	\
 					ft_check_ordered.c	\
 					ft_check_reverse_ordered.c	\
+					ft_destroy_splited_vals.c	\
 					ft_destroy_stack.c	\
+					ft_get_num_vals.c	\
+					ft_get_splited_vals.c	\
 					ft_handler_push.c	\
 					ft_handler_reverse_rotate.c	\
 					ft_handler_rotate.c	\
 					ft_handler_swap.c	\
 					ft_load_stack.c	\
+					ft_load_values.c	\
 					ft_main.c	\
 					ft_manage_stk_a.c	\
 					ft_manage_stk_b.c	\

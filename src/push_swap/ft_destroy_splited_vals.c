@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_stack_b_two.c                              :+:      :+:    :+:   */
+/*   ft_destroy_splited_vals.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 09:50:38 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 17:48:44 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/11/19 21:05:45 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/11/19 21:08:25 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_sort_two_stack_b(t_vars *vars)
+void	ft_destroy_splited_vals(char ***splited_vals)
 {
-	t_stack	*stk_b;
+	int	i;
 
-	stk_b = &vars->stk_b;
-	if (stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1])
-		ft_swap_one(stk_b, 'b', &vars->cmds);
-	ft_push(vars, 'a');
-	ft_push(vars, 'a');
+	i = 0;
+	while (splited_vals[i])
+	{
+		ft_split_destroy(splited_vals[i]);
+		i++;
+	}
+	free(splited_vals);
 }

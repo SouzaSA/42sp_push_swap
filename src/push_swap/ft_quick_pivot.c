@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:06:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 15:55:20 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/21 17:40:43 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	qselect(int *array, int len, int k)
 		if (array[i] > array[len - 1])
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		ft_swap(array, i, mid);
 		i++;

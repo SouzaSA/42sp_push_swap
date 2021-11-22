@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 12:49:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:01:49 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	vars.cmds = NULL;
 	if (argc > 1)
 	{
 		if (!ft_check_args(argc, argv))
@@ -29,6 +30,11 @@ int	main(int argc, char **argv)
 			write(2, "Error\n", 6);
 			return (1);
 		}
+	}
+	if (vars.cmds)
+	{
+		ft_lstiter(vars.cmds, &ft_write_move);
+		ft_lstclear(&vars.cmds, &free);
 	}
 	return (0);
 }

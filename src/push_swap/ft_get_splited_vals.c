@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_stack_b_two.c                              :+:      :+:    :+:   */
+/*   ft_get_splited_vals.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 09:50:38 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 17:48:44 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/11/19 21:10:34 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/11/19 21:12:24 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_sort_two_stack_b(t_vars *vars)
+char	***ft_get_splited_vals(int argc, char **argv)
 {
-	t_stack	*stk_b;
+	int		i;
+	int		j;
+	char	***vals;
 
-	stk_b = &vars->stk_b;
-	if (stk_b->values[stk_b->top] < stk_b->values[stk_b->top - 1])
-		ft_swap_one(stk_b, 'b', &vars->cmds);
-	ft_push(vars, 'a');
-	ft_push(vars, 'a');
+	i = 1;
+	j = 0;
+	vals = (char ***)malloc(argc * sizeof(char **));
+	while (i < argc)
+	{
+		vals[j] = ft_split(argv[i], ' ');
+		i++;
+		j++;
+	}
+	vals[j] = NULL;
+	return (vals);
 }

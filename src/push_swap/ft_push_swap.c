@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 20:32:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 12:44:50 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:13:09 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_push_swap(t_vars *vars)
 				ft_sort_three(&vars->stk_a, 3, &vars->cmds);
 			else if (vars->stk_a.top == 3)
 				ft_sort_four(vars, 4);
-			else if (vars->stk_a.top == 4 && vars->stk_a.top == 5)
+			else if (vars->stk_a.top == 4 || vars->stk_a.top == 5)
 				ft_sort_stack_a(vars, vars->stk_a.top + 1);
 			else
 				ft_separate_stk_a(vars, vars->stk_a.top + 1, 0);

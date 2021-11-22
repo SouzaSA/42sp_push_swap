@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/18 19:34:06 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/21 17:49:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_check_args(int argc, char **argv)
 	int		num_vals;
 	char	***vals;
 
-
 	i = 0;
 	values = NULL;
 	error = 0;
@@ -40,7 +39,7 @@ int	ft_check_args(int argc, char **argv)
 		i++;
 	}
 	if (!error)
-		values	= ft_load_values(vals, num_vals);
+		values = ft_load_values(vals, num_vals);
 	if (values)
 		error = ft_has_duplicates(values, num_vals);
 	else
@@ -81,7 +80,7 @@ static int	ft_has_invalid(char **vals)
 
 static int	ft_check_value(char *nb)
 {
-	int 	error;
+	int		error;
 	long	number;
 
 	error = 0;

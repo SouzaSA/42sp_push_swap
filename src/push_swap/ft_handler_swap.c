@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:05:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 12:02:38 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:07:02 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	ft_swap(t_stack *stack)
 /* ************************************************************************** */
 void	ft_swap_one(t_stack *stack, char name, t_list **cmds)
 {
-	char	print_val[3];
+	char	print_val[4];
 
 	if (stack->top > 0)
 	{
 		print_val[0] = 's';
 		print_val[1] = name;
 		print_val[2] = '\n';
+		print_val[3] = '\0';
 		ft_swap(stack);
 		ft_lstadd_back(cmds, ft_lstnew(ft_strdup(print_val)));
 	}

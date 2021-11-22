@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 09:44:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 13:12:10 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:09:08 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ static void	ft_sort_rev(t_vars *vars, int i);
 
 int	ft_check_reverse_ordered(t_vars *vars)
 {
-	int i;
+	int	i;
 
-	i = 0;
+	i = 1;
 	if (vars->stk_b.top >= 0)
 		return (0);
-	while (i++ <= vars->stk_a.top)
+	while (i <= vars->stk_a.top)
 	{
 		if (vars->stk_a.values[i] < vars->stk_a.values[i - 1]
 			&& i <= vars->stk_a.top)
 			return (0);
+		i++;
 	}
 	if (vars->stk_a.top == 1)
 		ft_sort_two_stack_a(&vars->stk_a, &vars->cmds);

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 09:47:56 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 13:19:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/21 17:59:47 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	ft_a_top_minus1_eq_pivot(t_stack *stk_a, int pivot, t_list **cmds)
 		ft_swap_one(stk_a, 'a', cmds);
 	}
 }
+
 static void	ft_a_top_minus2_eq_pivot(t_stack *stk_a, int pivot, t_list **cmds)
 {
 	if (stk_a->values[stk_a->top] < pivot)
