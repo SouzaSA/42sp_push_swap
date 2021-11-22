@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 17:49:12 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/22 10:52:40 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_check_value(char *nb);
 static int	ft_has_duplicates(int *values, int size);
 
 /* ************************************************************************** */
-/* check args - that all entries are integers and that there are no duplicate */
+/* check args - check if all entries are integers and there are no duplicates */
 /* values.                                                                    */
 /* ************************************************************************** */
 int	ft_check_args(int argc, char **argv)
