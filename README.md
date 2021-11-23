@@ -49,3 +49,29 @@ If the center elment is in the middle of stack, the stak is in inverse order, so
 ### Size four stack
 
 The stack with size four, the smallest value is bring to top and then send to stack b, then the stack a will be sorted by sort three function and then the value is pusshed back to stack a again. For this if the smallest value index is bigger than midde the stack (two because the stack is size four) the smallest value will be bring to the top by rotations, otherwise reverse rotations.
+
+### The pivot.
+
+Maybe the most important element of the code, so lets see wath it's does, it has the responsability of return the median element of an array, ie the element in the middle of an sorted array.
+
+The function that is responsible for obtaining this value is a modified function, where the modification is related to the stopping point, where the size of half of the vector is passed as one of the arguments, with this value the algorithm can be stopped prematurely, but already with the median value, as there is no interest in a complete ordering.
+
+### Stack of size five or six.
+
+To sort this, we obtain a pivot to stack a and a pivot to stack b, both of then by the stack a, but changing the last argument of the function which get the pivot, the pivot for a is get passing half of stack size, and pivot b is using one, because the stack has size five or six, a half of a half of this is one. (the size of stack b  will be a half of the size of the stack a)
+
+After getting the pivot all values less than it are pushed to stack b, then final stack a now has three elements and stack b has three or two elements depending on the original size of stack a. With this size of stacks its easy to order.
+
+### Bigger stacks
+
+To sort larger stacks the approach adopted was a modification of the quick sort algorithm, thus obtaining the pivot of stack a and passing half of the values to stack b recursively while stack a is greater than three.
+
+Each element of this execution stack has a block half the block size of the preceding element, and each of these blocks contains values greater than the block values of the preceding element.
+
+After reaching the recursion stop criterion, we have stack a with two or three elements and the others in stack b, at this point the pivot of the current block is determined and the values greater than the pivot are sent back to the stack a as long as the block size is greater than three. upon reaching this criterion, these values are sorted and returned to stack a.
+
+This process repeats until all elements are sorted.
+
+# Inportant Links.
+1. [A very nyce tester made by Lais Arena](https://github.com/laisarena/push_swap_tester)
+1. [A graphic visualizer made by Emmanuel Ruaud](https://github.com/o-reo/push_swap_visualizer)

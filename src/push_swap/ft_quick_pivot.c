@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:06:07 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 17:40:43 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:42:31 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_quick_pivot(t_stack *stk, int len, int k)
 	i = 0;
 	while (i < len)
 	{
-		tmp[len - 1 - i] = stk->values[stk->top - i];
+		tmp[i] = stk->values[stk->top - i];
 		i++;
 	}
 	pivot = qselect(tmp, len, k);
