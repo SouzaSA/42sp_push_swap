@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 22:37:03 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/23 11:11:17 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_vars
 }	t_vars;
 
 int		ft_check_args(int argc, char **argv);
-int		ft_is_ordered_stk_a(t_stack *stk_a);
+int		ft_is_sorted_stk_a(t_stack *stk_a);
 void	ft_destroy_stacks(t_vars *vars);
 void	ft_push(t_vars *vars, char name);
 void	ft_rev_rotate(t_stack *stack, char name, t_list **cmds);
@@ -52,7 +52,7 @@ void	ft_sort_three_stack_a(t_stack *stk_a, int len, t_list **cmds);
 void	ft_sort_two_stack_b(t_vars *vars);
 void	ft_sort_three_stack_b(t_vars *vars, int len);
 
-int		ft_check_reverse_ordered(t_vars *vars);
+int		ft_check_reverse_sorted(t_vars *vars);
 void	ft_sort_stack_a(t_vars *vars, int len);
 void	ft_sort_three(t_stack *stk_a, int len, t_list **cmds);
 void	ft_sort_four(t_vars *vars, int len);

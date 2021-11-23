@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_reverse_ordered.c                         :+:      :+:    :+:   */
+/*   ft_check_reverse_sorted.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 09:44:49 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 12:09:08 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/23 11:10:10 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_sort_rev(t_vars *vars, int i);
 
-int	ft_check_reverse_ordered(t_vars *vars)
+int	ft_check_reverse_sorted(t_vars *vars)
 {
 	int	i;
 

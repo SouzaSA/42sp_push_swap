@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
+#    Updated: 2021/11/23 11:12:23 by sde-alva         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 DEFAULT_GOAL	:=	all
 
 NAME			=	push_swap
@@ -22,8 +34,8 @@ LIBS			=	-L ${LIBFT_LIB} -l ${LIBFT}
 SAN				=	-g -fsanitize=address
 
 SRCS			=	ft_check_args.c	\
-					ft_check_ordered.c	\
-					ft_check_reverse_ordered.c	\
+					ft_check_sorted.c	\
+					ft_check_reverse_sorted.c	\
 					ft_destroy_splited_vals.c	\
 					ft_destroy_stack.c	\
 					ft_get_num_vals.c	\
