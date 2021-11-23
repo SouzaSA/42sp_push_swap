@@ -72,6 +72,6 @@ After reaching the recursion stop criterion, we have stack a with two or three e
 
 This process repeats until all elements are sorted.
 
-# Inportant Links.
+# Important Links.
 1. [A very nyce tester made by Lais Arena](https://github.com/laisarena/push_swap_tester)
 1. [A graphic visualizer made by Emmanuel Ruaud](https://github.com/o-reo/push_swap_visualizer)
