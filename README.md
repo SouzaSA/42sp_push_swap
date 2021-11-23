@@ -1,5 +1,5 @@
 #PUSH SWAP
----
+
 ##Goal
 
 In this project we have to sort, in ascending order, a stack, using a second stack, using a restrict group of instructions.
