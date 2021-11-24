@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:47:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/13 11:38:05 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/23 21:11:34 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {

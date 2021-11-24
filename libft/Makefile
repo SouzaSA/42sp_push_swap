@@ -7,6 +7,7 @@ OBJ_DIR			=	obj
 INC_DIR			=	inc
 SRC_DIR			=	src
 ARRAY_DIR		=	array
+GNL_DIR			=	gnl
 IS_DIR			=	is
 LST_DIR			=	lst
 MATH_DIR		=	math
@@ -19,6 +20,9 @@ INCS			=	-I ./${INC_DIR}
 
 ARRAY			=	ft_largest_int.c	\
 					ft_smallest_int.c
+
+GNL				= 	ft_get_next_line_utils.c	\
+					ft_get_next_line.c
 
 IS				=	ft_isalnum.c	\
 					ft_isalpha.c	\
@@ -82,6 +86,7 @@ STR				=	ft_atoi.c	\
 					ft_toupper.c
 
 SRCS			=	${ADD_DIR_ARRAY}	\
+					${ADD_DIR_GNL}	\
 					${ADD_DIR_IS}	\
 					${ADD_DIR_LST}	\
 					${ADD_DIR_MATH}	\
@@ -91,6 +96,7 @@ SRCS			=	${ADD_DIR_ARRAY}	\
 					${ADD_DIR_STR}
 
 ADD_DIR_ARRAY	=	${addprefix ${ARRAY_DIR}/,${ARRAY}}
+ADD_DIR_GNL		=	${addprefix ${GNL_DIR}/,${GNL}}
 ADD_DIR_IS		=	${addprefix ${IS_DIR}/,${IS}}
 ADD_DIR_LST		=	${addprefix ${LST_DIR}/,${LST}}
 ADD_DIR_MATH	=	${addprefix ${MATH_DIR}/,${MATH}}

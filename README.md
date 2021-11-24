@@ -68,7 +68,7 @@ After getting the pivot all values less than it are pushed to stack b, then fina
 To sort larger stacks the approach adopted was a modification of the quick sort algorithm, thus obtaining the pivot of stack a and passing half of the values to stack b recursively while stack a is greater than three.
 
 Each element of this execution stack has a block half the block size of the preceding element, and each of these blocks contains values greater than the block values of the preceding element.
-s
+
 After reaching the recursion stop criterion, we have stack a with two or three elements and the others in stack b, at this point the pivot of the current block is determined and the values greater than the pivot are sent back to the stack a as long as the block size is greater than three. upon reaching this criterion, these values are sorted and returned to stack a.
 
 This process repeats until all elements are sorted.

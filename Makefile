@@ -6,7 +6,7 @@
 #    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
-#    Updated: 2021/11/23 11:12:23 by sde-alva         ###   ########.fr        #
+#    Updated: 2021/11/23 21:51:48 by sde-alva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME_BONUS		=	checker
 SRC_DIR			=	src
 PUSH_SWAP_DIR	=	push_swap
 CHECKER_DIR		=	checker
+SHARED_DIR		=	shared
 OBJ_DIR			=	obj
 INC_DIR			=	inc
 
@@ -33,19 +34,20 @@ INCS			=	-I ${INC_DIR} -I ${LIBFT_INC}
 LIBS			=	-L ${LIBFT_LIB} -l ${LIBFT}
 SAN				=	-g -fsanitize=address
 
-SRCS			=	ft_check_args.c	\
+SHARED_FILES	=	ft_check_args.c	\
 					ft_check_sorted.c	\
-					ft_check_reverse_sorted.c	\
 					ft_destroy_splited_vals.c	\
 					ft_destroy_stack.c	\
 					ft_get_num_vals.c	\
 					ft_get_splited_vals.c	\
+					ft_load_stack.c	\
+					ft_load_values.c
+
+SRCS			=	ft_check_reverse_sorted.c	\
 					ft_handler_push.c	\
 					ft_handler_reverse_rotate.c	\
 					ft_handler_rotate.c	\
 					ft_handler_swap.c	\
-					ft_load_stack.c	\
-					ft_load_values.c	\
 					ft_main.c	\
 					ft_manage_stk_a.c	\
 					ft_manage_stk_b.c	\
@@ -58,9 +60,14 @@ SRCS			=	ft_check_args.c	\
 					ft_sort_stack_b_three.c	\
 					ft_sort_stack_b_two.c	\
 					ft_sort_three.c \
-					ft_write_move.c
+					ft_write_move.c \
+					${SHARED_DIR_ADD}
 
-BONUS			=
+BONUS			=	ft_checker.c	\
+					ft_main.c	\
+					${SHARED_DIR_ADD}
+
+SHARED_DIR_ADD	=	${addprefix ../${SHARED_DIR}/,${SHARED_FILES}}
 
 SRCS_DIR		=	${addprefix ${PUSH_SWAP_DIR}/,${SRCS}}
 
@@ -82,10 +89,13 @@ ${NAME}:		${OBJS}
 				make -C ${LIBFT_DIR}
 				${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
+${NAME_BONUS}:	${BONUS_OBJS}
+				make -C ${LIBFT_DIR}
+				${CC} ${CFLAGS} ${BONUS_OBJS} ${LIBS} ${INCS} -o ${NAME_BONUS}
+
 all:			${NAME}
 
-bonus:			${BONUS_OBJS}
-				${CC} ${CFLAGS} ${BONUS_OBJS} -o ${NAME} ${INCS}
+bonus:			${NAME_BONUS}
 
 san:			${OBJS}
 				${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
