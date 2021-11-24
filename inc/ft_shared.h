@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:05:32 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/23 20:38:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/24 13:15:49 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ typedef struct s_vars
 	t_stack	stk_b;
 	t_list	*cmds;
 }	t_vars;
+
+void	ft_reverse_rotate_worker(t_stack *stack);
+void	ft_push_worker(t_stack *stack_x, t_stack *stack_y);
+void	ft_rotate_worker(t_stack *stack);
+void	ft_swap_worker(t_stack *stack);
 
 int		ft_check_args(int argc, char **argv);
 int		ft_is_sorted_stk_a(t_stack *stk_a);

@@ -43,9 +43,11 @@ After this swap first element of all stacks, so stack a are partially sorted, an
 
 ### Size three stack
 
-With size three stack, take the center element, the center element is the median value in the stack, and check its position. If its in the top of stack, check if the base element is greater than the middle element, if true a swap will already order the stack, otherwise a reverse rotate will do the work.
+With size three stack, take the center element the center element is the median value in the stack, and check its position. If its in the top of stack, check if the base element is greater than the middle element, if true a swap will already order the stack, otherwise a reverse rotate will do the work.
 
-If the center elment is in the middle of stack, the stak is in inverse order, so to be ordered it must be rotate one time and swaped. The last option is the center element is in the bottom of stack, so if the top element is smaller than the middle one, to be sorted the stack must be swaped and rotated, otherwise a single rotate will sort.
+If the center elment is in the middle of stack, and top element is bigger than the botton one, so to be ordered it must be rotate one time and then swaped, otherwise a simple rotate will sort the stack.
+
+The last option is the center element is in the bottom of stack, so if the top element is smaller than the middle one, to be sorted the stack must be swaped and rotated, otherwise a single rotate will sort.
 
 ### Size four stack
 

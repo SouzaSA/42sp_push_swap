@@ -6,30 +6,11 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:09:39 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/19 20:06:38 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/24 13:10:26 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-/* ************************************************************************** */
-/* reverse rotate worker - shift down all elements of a stack by 1. The last  */
-/* element becomes the first one                                              */
-/* ************************************************************************** */
-void	ft_reverse_rotate_worker(t_stack *stack)
-{
-	int	i;
-	int	tmp;
-
-	i = 0;
-	while (i < stack->top)
-	{
-		tmp = stack->values[i + 1];
-		stack->values[i + 1] = stack->values[i];
-		stack->values[i] = tmp;
-		i++;
-	}
-}
 
 /* ************************************************************************** */
 /* reverse rotate - shift down all elements of a stack by 1. The last element */

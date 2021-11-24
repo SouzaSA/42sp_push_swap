@@ -6,7 +6,7 @@
 #    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
-#    Updated: 2021/11/23 21:51:48 by sde-alva         ###   ########.fr        #
+#    Updated: 2021/11/24 13:18:30 by sde-alva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,11 @@ SHARED_FILES	=	ft_check_args.c	\
 					ft_get_num_vals.c	\
 					ft_get_splited_vals.c	\
 					ft_load_stack.c	\
-					ft_load_values.c
+					ft_load_values.c	\
+					ft_worker_push.c	\
+					ft_worker_reverse_rotate.c	\
+					ft_worker_rotate.c	\
+					ft_worker_swap.c
 
 SRCS			=	ft_check_reverse_sorted.c	\
 					ft_handler_push.c	\

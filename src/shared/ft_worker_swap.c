@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handler_push.c                                  :+:      :+:    :+:   */
+/*   ft_worker_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 18:07:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/24 13:12:15 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/11/24 13:05:54 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/11/24 13:18:11 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "ft_shared.h"
 
 /* ************************************************************************** */
-/* push - take the first element at the top of one stack and put it at the    */
-/* top of another stack. Do nothing if the first stack is empty.              */
+/* swap - swap the first 2 elements at the top of a stack. hardwork.          */
 /* ************************************************************************** */
-void	ft_push(t_vars *vars, char name)
+void	ft_swap_worker(t_stack *stack)
 {
-	char	print_val[4];
+	int	tmp;
 
-	print_val[0] = 'p';
-	print_val[1] = name;
-	print_val[2] = '\n';
-	print_val[3] = '\0';
-	if (name == 'a')
-		ft_push_worker(&vars->stk_a, &vars->stk_b);
-	if (name == 'b')
-		ft_push_worker(&vars->stk_b, &vars->stk_a);
-	ft_lstadd_back(&vars->cmds, ft_lstnew(ft_strdup(print_val)));
+	tmp = stack->values[stack->top];
+	stack->values[stack->top] = stack->values[stack->top - 1];
+	stack->values[stack->top - 1] = tmp;
 }
