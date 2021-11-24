@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:00:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/23 20:38:08 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:20:46 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_swap_both(t_vars *vars);
 int		ft_push_swap(t_vars *vars);
 void	ft_separate_stk_a(t_vars *vars, int blk, int flag);
 void	ft_separate_stk_b(t_vars *vars, int blk, int flag);
-int		ft_quick_pivot(t_stack *stk, int len, int k);
+int		ft_quick_pivot(t_stack *stk, int len, int stop);
 void	ft_sort_stack_a(t_vars *vars, int len);
 void	ft_sort_two_stack_a(t_stack *stk_a, t_list **cmds);
 void	ft_sort_three_stack_a(t_stack *stk_a, int len, t_list **cmds);

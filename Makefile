@@ -6,7 +6,7 @@
 #    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
-#    Updated: 2021/11/24 13:18:30 by sde-alva         ###   ########.fr        #
+#    Updated: 2021/11/24 19:57:35 by sde-alva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,11 @@ SRCS			=	ft_check_reverse_sorted.c	\
 
 BONUS			=	ft_checker.c	\
 					ft_main.c	\
+					ft_exec_cmds.c	\
+					ft_exec_push.c	\
+					ft_exec_reverse_rotate.c	\
+					ft_exec_rotate.c	\
+					ft_exec_swap.c	\
 					${SHARED_DIR_ADD}
 
 SHARED_DIR_ADD	=	${addprefix ../${SHARED_DIR}/,${SHARED_FILES}}

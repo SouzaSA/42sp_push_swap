@@ -6,12 +6,12 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:42:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/23 21:40:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:41:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
 # ifndef BUFFER_SIZE
