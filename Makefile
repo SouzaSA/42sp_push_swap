@@ -6,7 +6,7 @@
 #    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
-#    Updated: 2021/11/24 19:57:35 by sde-alva         ###   ########.fr        #
+#    Updated: 2021/11/27 17:36:31 by sde-alva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ clean:
 
 fclean: 		clean
 				${RM} ${NAME}
+				${RM} ${NAME_BONUS}
 				make -C ${LIBFT_DIR} fclean
 
 re:				fclean all
