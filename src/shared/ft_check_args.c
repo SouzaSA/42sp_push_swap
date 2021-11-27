@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/22 10:52:40 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/27 14:04:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	ft_has_invalid(char **vals)
 		arg_len = ft_strlen(vals[i]);
 		while (j < arg_len)
 		{
-			if (!ft_isdigit(vals[i][j]) && vals[i][j] != '+'
+			if (!ft_isdigit(vals[i][j]) && vals[i][j] != '+' \
 				&& vals[i][j] != '-')
 			{
 				error = 1;
@@ -80,13 +80,24 @@ static int	ft_has_invalid(char **vals)
 
 static int	ft_check_value(char *nb)
 {
+	int		i;
 	int		error;
 	long	number;
 
+	i = 0;
 	error = 0;
-	number = ft_atoi(nb);
-	if ((number < 0 && nb[0] != '-') || (number > 0 && nb[0] == '-'))
-		error = 1;
+	while (nb[i])
+	{
+		if ((nb[i] == '+' || nb[i] == '-') && !ft_isdigit(nb[i + 1]))
+			error = 1;
+		i++;
+	}
+	if (!error)
+	{
+		number = ft_atoi(nb);
+		if ((number < 0 && nb[0] != '-') || (number > 0 && nb[0] == '-'))
+			error = 1;
+	}
 	return (error);
 }
 

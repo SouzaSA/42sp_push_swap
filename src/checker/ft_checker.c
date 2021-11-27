@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:32:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/24 19:55:30 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:55:32 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_checker(t_vars *vars)
 	char	*cmd;
 
 	cmd = get_next_line(0);
-	while (cmd[0] != '\n')
+	while (cmd && cmd[0] != '\n')
 	{
 		if (ft_cmd_checker(cmd))
 			ft_lstadd_back(&vars->cmds, ft_lstnew(ft_strdup(cmd)));
@@ -32,9 +32,9 @@ int	ft_checker(t_vars *vars)
 	}
 	free(cmd);
 	if (ft_exec_cmds(vars))
-		write(2, "OK\n", 3);
+		write(1, "OK\n", 3);
 	else
-		write(2, "KO\n", 3);
+		write(1, "KO\n", 3);
 	return (0);
 }
 
