@@ -6,13 +6,14 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:19:33 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/27 14:04:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:14:20 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int	ft_has_invalid(char **argv);
+static int	ft_has_invalid_arg(int argc, char **argv);
+static int	ft_has_invalid_char(char **argv);
 static int	ft_check_value(char *nb);
 static int	ft_has_duplicates(int *values, int size);
 
@@ -30,12 +31,12 @@ int	ft_check_args(int argc, char **argv)
 
 	i = 0;
 	values = NULL;
-	error = 0;
+	error = ft_has_invalid_arg(argc, argv);
 	vals = ft_get_splited_vals(argc, argv);
 	num_vals = ft_get_num_vals(vals);
 	while (vals[i] && !error)
 	{
-		error = ft_has_invalid(vals[i]);
+		error = ft_has_invalid_char(vals[i]);
 		i++;
 	}
 	if (!error)
@@ -49,7 +50,31 @@ int	ft_check_args(int argc, char **argv)
 	return (error);
 }
 
-static int	ft_has_invalid(char **vals)
+static int	ft_has_invalid_arg(int argc, char **argv)
+{
+	int	i;
+	int	j;
+	int	has_invalid;
+	int	arg_len;
+
+	i = 1;
+	has_invalid = 0;
+	while (i < argc)
+	{
+		j = 0;
+		arg_len = ft_strlen(argv[i]);
+		if (ft_strlen(argv[i]) == 0)
+			has_invalid = 1;
+		while (argv[i][j] && !ft_isdigit(argv[i][j]))
+			j++;
+		if (j == arg_len)
+			has_invalid = 1;
+		i++;
+	}
+	return (has_invalid);
+}
+
+static int	ft_has_invalid_char(char **vals)
 {
 	int		i;
 	int		j;
