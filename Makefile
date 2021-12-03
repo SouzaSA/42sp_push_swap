@@ -6,11 +6,11 @@
 #    By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 20:32:03 by sde-alva          #+#    #+#              #
-#    Updated: 2021/11/27 17:36:31 by sde-alva         ###   ########.fr        #
+#    Updated: 2021/11/28 14:53:44 by sde-alva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEFAULT_GOAL	:=	all
+.DEFAULT_GOAL	:=	all
 
 NAME			=	push_swap
 

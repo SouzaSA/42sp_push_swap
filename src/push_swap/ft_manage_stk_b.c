@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 14:16:21 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/11/21 22:35:16 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/12/03 19:54:08 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ static int	ft_partition(t_vars *vars, int pivot, int cnt_b, int *pushed)
 			*pushed += 1;
 		}
 		else if (vars->stk_b.values[vars->stk_b.top] == pivot)
-		{
 			ft_push_pivot(vars, &cnt_rotate_b, &cnt_b, pivot);
-			*pushed += 1;
-		}
 		else
 		{
 			ft_rotate(&vars->stk_b, 'b', &vars->cmds);
